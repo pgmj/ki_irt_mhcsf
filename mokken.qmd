@@ -1,0 +1,224 @@
+---
+title: "Mokken analysis"
+title-block-banner: "#009ca6"
+title-block-banner-color: "#FFFFFF"
+author: 
+  name: Magnus Johansson
+  affiliation: RISE Research Institutes of Sweden
+  affiliation-url: https://www.ri.se/en/kbm
+  orcid: 0000-0003-1669-592X
+date: last-modified
+date-format: iso
+always_allow_html: true
+format: html
+execute:
+  echo: true
+  warning: false
+  message: false
+  cache: false
+editor_options: 
+  markdown: 
+    wrap: 72
+  chunk_output_type: console
+bibliography: 
+  - references.bib
+  - grateful-refs.bib
+---
+
+```{r}
+#| label: setup
+
+# one package below requires that you use devtools to install them manually:
+# first install devtools by
+# install.packages('devtools')
+
+library(RISEkbmRasch) # devtools::install_github("pgmj/RISEkbmRasch")
+library(mokken)
+library(readxl)
+library(grateful)
+
+### optional libraries
+#library(TAM)
+#library(skimr)
+
+### some commands exist in multiple packages, here we define preferred ones that are frequently used
+select <- dplyr::select
+count <- dplyr::count
+recode <- car::recode
+rename <- dplyr::rename
+
+source("RISE_theme.R")
+```
+
+```{r}
+### import data
+# df <- read_excel("data/MasterFile_CLEAN.xlsx") %>% 
+#   rename(gender = WhatisyourgenderSelectedChoice,
+#          age = Whatisyourage,
+#          citizenship = WhatisyourcitizenshipSelectedChoice) %>% 
+#   select(gender,age,citizenship,starts_with("mhc")) %>% 
+#   select(-starts_with("mhc_"))
+# 
+# ### Load item information
+# # make sure that variable names in df match with itemlabels$itemnr
+# itemlabels <- read_excel("data/itemlabels_MHC_SF.xlsx") %>% 
+#   mutate(item = str_squish(item))
+# 
+# #---- Create DIF variables----
+#   
+# # DIF variables into vectors, recoded as factors since DIF functions need this
+# dif.gender <- as.factor(df$gender)
+# dif.age <- df$age
+# dif.citizenship <- as.factor(df$citizenship)
+# # then remove them from dataframe, since we need a dataframe with only item data for the Rasch analyses
+# df$gender <- NULL
+# df$age <- NULL
+# df$citizenship <- NULL
+
+```
+
+```{r}
+### other, bigger dataset from [@echeverría2017]
+### read file
+df.all <- read_excel("data/data_sMHCSF_Echeverria2017.xlsx")
+df <- df.all
+### create dif variables
+dif.sex <- factor(df$Sex)
+df$Sex <- NULL
+
+### Load item information
+# make sure that variable names in df match with itemlabels$itemnr
+itemlabels <- read_excel("data/itemlabels_MHC_SF.xlsx") %>% 
+  mutate(item = str_squish(item))
+
+names(df) <- itemlabels$itemnr
+
+df <- df %>%
+  mutate(across(everything(), ~ car::recode(.x,"'Never'=0;'1 or 2 times a month'=1;'About 1 time a week'=2;'About 2 or 3 times a week'=3;'Almost daily'=4;'Daily'=5", as.factor = FALSE)))
+
+df <- as.matrix(df)
+
+```
+
+## Mokken analysis 1
+
+Recommended papers:
+
+-   [@stochl2012]
+-   [@sijtsma2017]
+
+Assumptions of Mokken scale analysis
+
+-   Assumption of unidimensionality
+-   Assumption of local independence
+-   Assumption of monotonicity
+-   Assumption of non-intersection
+
+```{r}
+#| column: margin
+#| echo: false
+RIlistItemsMargin(df, fontsize = 13)
+```
+
+::: panel-tabset
+### AISP
+
+[@stochl2012]
+
+> It is suggested that Loevinger's scalability coefficients can be used
+> for assessment of unidimensionality.
+
+> As a rule of thumb in practical interpret- ation of analyses, scales
+> with H \< 0.3 are not considered as unidimensional. Item sets with H
+> coefficients higher than 0.3 and lower than 0.4 are typically
+> considered to be indicative of only weak scales: unidimensional but
+> not strong in any scaling sense. When H ranges between 0.4 and \<0.5
+> the scales is considered of medium strength and only when H \> 0.5,
+> the scale is seen as strong \[5\]. Higher H values mean that the slope
+> of the ICCs tend to be steeper, which implies that the items
+> discriminate better among different values of θ
+
+```{r}
+aisp(df)
+```
+
+### Coef H
+
+```{r}
+coefH(df)
+```
+
+### monotonicity
+
+```{r}
+mon1 <- check.monotonicity(df)
+summary(mon1)
+```
+
+```{r}
+#| layout-ncol: 2
+plot(mon1, ask = FALSE)
+```
+
+> Next we consider the assessment of monotonicity, i.e. that item
+> character- istics curves are monotonically increasing functions of
+> latent trait. Monotonicity is an important feature since it allows the
+> researcher to order respondents on a latent continuum with respect to
+> the sum score of the items belonging to the same scale.
+
+### iio/non-intersection
+
+```{r}
+iio1 <- check.iio(df)
+```
+
+> Checking of IIO within the R “mokken” library is done using the
+> function check.iio. Three different method options are available to
+> users – (1) manifest invariant item ordering (MIIO), (2) manifest
+> scale - cumulative probabil- ity mode (MSCPM) and (3) increasingness
+> in transpos- ition (IT).
+
+> The backward selection method can be used to re- move items violating
+> IIO. If there is an equal number of violations for two or more items
+> then the item with the lowest scalability is removed \[14\]. As an
+> alternative to this exploratory approach, the worst item found to be
+> violating the IIO property can be discarded and IIO of the rest of the
+> items checked again, in iterative steps. Likewise for monotonicity, it
+> is recommended to only remove one item at a time since IIO violations
+> of other items may be influenced by the inclusion or exclusion of any
+> particular item.
+
+```{r}
+pmatr1 <- check.pmatrix(df)
+summary(pmatr1)
+#plot(pmatr1)
+```
+
+```{r}
+restsc1 <- check.restscore(df)
+summary(restsc1)
+#plot(restsc1)
+```
+
+the number of significant violations (#zsig).
+
+The violation found in restscore.com\$results\[\[31\]\]\[\[3\]\] is also
+shown in the graph because the thick solid line and the thick dashed
+line intersect.
+:::
+
+
+## Software used
+
+```{r}
+pkgs <- cite_packages(cite.tidyverse = TRUE, 
+                      output = "table",
+                      bib.file = "grateful-refs.bib",
+                      include.RStudio = TRUE,
+                      out.dir = getwd())
+formattable(pkgs, 
+            table.attr = 'class=\"table table-striped\" style="font-size: 15px; font-family: Lato; width: 80%"')
+
+```
+
+## References

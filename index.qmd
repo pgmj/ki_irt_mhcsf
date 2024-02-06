@@ -1,0 +1,203 @@
+---
+title: "Intro and descriptives"
+title-block-banner: "#009ca6"
+title-block-banner-color: "#FFFFFF"
+author: 
+  name: Magnus Johansson
+  affiliation: RISE Research Institutes of Sweden
+  affiliation-url: https://www.ri.se/en/kbm
+  orcid: 0000-0003-1669-592X
+date: last-modified
+date-format: iso
+always_allow_html: true
+format: html
+execute:
+  echo: true
+  warning: false
+  message: false
+  cache: false
+editor_options: 
+  markdown: 
+    wrap: 72
+  chunk_output_type: console
+bibliography: references.bib
+---
+
+```{r}
+#| label: setup
+
+# one package below requires that you use devtools to install it manually:
+# first install devtools by
+# install.packages('devtools')
+
+library(RISEkbmRasch) # devtools::install_github("pgmj/RISEkbmRasch")
+library(grateful)
+library(ggrepel)
+library(car)
+library(kableExtra)
+library(readxl)
+library(tidyverse)
+library(eRm)
+library(mirt)
+library(psych)
+library(psychotree)
+library(matrixStats)
+library(reshape)
+library(knitr)
+library(patchwork)
+library(formattable) 
+library(glue)
+
+### optional libraries
+#library(TAM)
+#library(skimr)
+
+### some commands exist in multiple packages, here we define preferred ones that are frequently used
+select <- dplyr::select
+count <- dplyr::count
+recode <- car::recode
+rename <- dplyr::rename
+
+source("RISE_theme.R")
+```
+
+```{r}
+### import data https://doi.org/10.6084/m9.figshare.19174205.v2
+# df <- read_excel("data/MasterFile_CLEAN.xlsx") %>% 
+#   rename(gender = WhatisyourgenderSelectedChoice,
+#          age = Whatisyourage,
+#          citizenship = WhatisyourcitizenshipSelectedChoice) %>% 
+#   select(gender,age,citizenship,starts_with("mhc")) %>% 
+#   select(-starts_with("mhc_"))
+# 
+# ### Load item information
+# # make sure that variable names in df match with itemlabels$itemnr
+# itemlabels <- read_excel("data/itemlabels_MHC_SF.xlsx") %>% 
+#   mutate(item = str_squish(item))
+# 
+# #---- Create DIF variables----
+#   
+# # DIF variables into vectors, recoded as factors since DIF functions need this
+# dif.gender <- as.factor(df$gender)
+# dif.age <- df$age
+# dif.citizenship <- as.factor(df$citizenship)
+# # then remove them from dataframe, since we need a dataframe with only item data for the Rasch analyses
+# df$gender <- NULL
+# df$age <- NULL
+# df$citizenship <- NULL
+
+```
+
+```{r}
+### other, bigger dataset from [@echeverría2017]
+### read file
+df.all <- read_excel("data/data_sMHCSF_Echeverria2017.xlsx")
+df <- df.all
+### create dif variables
+dif.sex <- factor(df$Sex)
+df$Sex <- NULL
+
+### Load item information
+# make sure that variable names in df match with itemlabels$itemnr
+itemlabels <- read_excel("data/itemlabels_MHC_SF.xlsx") %>% 
+  mutate(item = str_squish(item))
+
+names(df) <- itemlabels$itemnr
+
+df <- df %>%
+  mutate(across(everything(), ~ car::recode(.x,"'Never'=0;'1 or 2 times a month'=1;'About 1 time a week'=2;'About 2 or 3 times a week'=3;'Almost daily'=4;'Daily'=5", as.factor = FALSE)))
+```
+
+## Introduction
+
+In a paper recently made available as a preprint [@johansson], we argue
+that the basic aspects of a psychometric analysis should include
+information about five basic criteria:
+
+-   Unidimensionality
+-   Response categories
+-   Invariance
+-   Targeting
+-   Measurement uncertainties (reliability)
+
+## About the MHC-SF
+
+The Mental Health Continuum-Short Form (MHC-SF) is a well-being scale
+designed to assess emotional, psychological and social well-being
+[@keyes2009]. The dataset for this analysis was made available as open
+data connected to a psychometric analysis publication [@echeverría2017;
+@echeverría].
+
+While there are papers suggesting a three factor or bi-factor model for the MHC-SF, in practice it is usually used as a sum scored unidimensional scale, which is why our analyses will focus on how the data fits a unidimensional model.
+
+### Items
+
+```{r}
+RIlistitems(df)
+```
+
+### Response categories
+
+-   'Never',
+-   '1 or 2 times a month',
+-   'About 1 time a week',
+-   'About 2 or 3 times a week',
+-   'Almost daily',
+-   'Daily'
+
+## Demographics
+
+```{r}
+#| layout-ncol: 2
+RIdemographics(dif.sex, "Gender")
+```
+
+## Descriptives
+
+Response distribution for all items are summarized below.
+
+```{r}
+#| tbl-cap: "Total number of responses for all items"
+# Specify the numeric-to-label mapping
+numeric_to_labels <- c('Never', '1 or 2 times a month', 'About 1 time a week', 'About 2 or 3 times a week', 'Almost daily', 'Daily')
+df %>% 
+  mutate(across(everything(), ~ factor(.x, labels = numeric_to_labels))) %>% 
+  RIallresp()
+```
+
+### Descriptives - item level
+
+```{r}
+#| column: margin
+RIlistItemsMargin(df, fontsize = 12)
+```
+
+::: panel-tabset
+#### Tile plot
+
+```{r}
+RItileplot(df)
+```
+
+#### Stacked bars
+
+```{r}
+RIbarstack(df) +
+  scale_fill_viridis_d(labels = rev(numeric_to_labels), direction = -1)
+```
+
+#### Barplots
+
+```{r}
+#| layout-ncol: 2
+RIbarplot(df)
+```
+
+#### Missing responses
+
+```{r}
+RImissing(df)
+```
+:::
+
+## References
