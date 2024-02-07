@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Magnus Johansson">
-<meta name="dcterms.date" content="2024-02-06">
+<meta name="dcterms.date" content="2024-02-07">
 
 <title>Psychometric analysis of the Mental Health Continuum-Short Form (MHC-SF) - 4&nbsp; Mokken analysis</title>
 <style>
@@ -185,7 +185,7 @@ background: #009ca6;
       <div>
       <div class="quarto-title-meta-heading">Published</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">2024-02-06</p>
+        <p class="date">2024-02-07</p>
       </div>
     </div>
     
@@ -246,8 +246,9 @@ background: #009ca6;
    
   <ul>
   <li><a href="#mokken-analysis-1" id="toc-mokken-analysis-1" class="nav-link active" data-scroll-target="#mokken-analysis-1"><span class="header-section-number">4.1</span> Mokken analysis 1</a></li>
-  <li><a href="#software-used" id="toc-software-used" class="nav-link" data-scroll-target="#software-used"><span class="header-section-number">4.2</span> Software used</a></li>
-  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references"><span class="header-section-number">4.3</span> References</a></li>
+  <li><a href="#mokken-2" id="toc-mokken-2" class="nav-link" data-scroll-target="#mokken-2"><span class="header-section-number">4.2</span> Mokken 2</a></li>
+  <li><a href="#software-used" id="toc-software-used" class="nav-link" data-scroll-target="#software-used"><span class="header-section-number">4.3</span> Software used</a></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references"><span class="header-section-number">4.4</span> References</a></li>
   </ul>
 </nav>
     </div>
@@ -331,7 +332,7 @@ background: #009ca6;
 <span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span></span>
 <span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">everything</span>(), <span class="sc">~</span> car<span class="sc">::</span><span class="fu">recode</span>(.x,<span class="st">"'Never'=0;'1 or 2 times a month'=1;'About 1 time a week'=2;'About 2 or 3 times a week'=3;'Almost daily'=4;'Daily'=5"</span>, <span class="at">as.factor =</span> <span class="cn">FALSE</span>)))</span>
 <span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">as.matrix</span>(df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>dfm <span class="ot">&lt;-</span> <span class="fu">as.matrix</span>(df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <section id="mokken-analysis-1" class="level2 page-columns page-full" data-number="4.1">
@@ -365,13 +366,123 @@ item
 </thead>
 <tbody>
 <tr>
+<td style="text-align:center;">
+<span style="color: grey; font-weight: bold">mhc1 </span>
+</td>
+<td style="text-align:left;">
+Happy
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+<span style="color: grey; font-weight: bold">mhc2 </span>
+</td>
+<td style="text-align:left;">
+Interested in life
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+<span style="color: grey; font-weight: bold">mhc3 </span>
+</td>
+<td style="text-align:left;">
+Satisfied with your life
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+<span style="color: grey; font-weight: bold">mhc4 </span>
+</td>
+<td style="text-align:left;">
+That you had something important to contribute to society?
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+<span style="color: grey; font-weight: bold">mhc5 </span>
+</td>
+<td style="text-align:left;">
+That you belonged to a community?
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+<span style="color: grey; font-weight: bold">mhc6 </span>
+</td>
+<td style="text-align:left;">
+That our society is becoming a better place for people like you?
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+<span style="color: grey; font-weight: bold">mhc7 </span>
+</td>
+<td style="text-align:left;">
+That people are basically good?
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+<span style="color: grey; font-weight: bold">mhc8 </span>
+</td>
+<td style="text-align:left;">
+That the way our society works makes sense to you?
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+<span style="color: grey; font-weight: bold">mhc9 </span>
+</td>
+<td style="text-align:left;">
+That you liked most parts of your personality?
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+<span style="color: grey; font-weight: bold">mhc10</span>
+</td>
+<td style="text-align:left;">
+Good at managing the responsibilities of your daily life?
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+<span style="color: grey; font-weight: bold">mhc11</span>
+</td>
+<td style="text-align:left;">
+That you had warm and trusting relationships with others?
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+<span style="color: grey; font-weight: bold">mhc12</span>
+</td>
+<td style="text-align:left;">
+That you had experiences that challenged you to grow and become a better person?
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+<span style="color: grey; font-weight: bold">mhc13</span>
+</td>
+<td style="text-align:left;">
+Confident to think or express your own ideas and opinions?
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+<span style="color: grey; font-weight: bold">mhc14</span>
+</td>
+<td style="text-align:left;">
+That your life has a sense of direction or meaning to it?
+</td>
 </tr>
 </tbody>
 
 </table>
 </div></div></div>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true">AISP</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false">Coef H</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-3" role="tab" aria-controls="tabset-1-3" aria-selected="false">monotonicity</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-4-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-4" role="tab" aria-controls="tabset-1-4" aria-selected="false">iio/non-intersection</a></li></ul>
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true">AISP</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false">Coef H</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-3" role="tab" aria-controls="tabset-1-3" aria-selected="false">monotonicity</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-4-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-4" role="tab" aria-controls="tabset-1-4" aria-selected="false">iio/non-intersection</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-5-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-5" role="tab" aria-controls="tabset-1-5" aria-selected="false">pmatrix</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-6-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-6" role="tab" aria-controls="tabset-1-6" aria-selected="false">restscore</a></li></ul>
 <div class="tab-content">
 <div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
 <p><span class="citation" data-cites="stochl2012">(<a href="#ref-stochl2012" role="doc-biblioref">Stochl, Jones, and Croudace 2012</a>)</span></p>
@@ -384,7 +495,7 @@ item
 <div class="cell">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">aisp</span>(df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">aisp</span>(dfm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>      0.3
@@ -409,7 +520,7 @@ mhc14   1</code></pre>
 <div class="cell">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">coefH</span>(df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">coefH</span>(dfm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>$Hij
@@ -501,7 +612,7 @@ Scale H      se
 <div class="cell">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>mon1 <span class="ot">&lt;-</span> <span class="fu">check.monotonicity</span>(df)</span>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>mon1 <span class="ot">&lt;-</span> <span class="fu">check.monotonicity</span>(dfm)</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(mon1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
@@ -594,8 +705,50 @@ mhc14  0.60 156   0       0     0   0       0    0     0    0</code></pre>
 <div class="cell">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>iio1 <span class="ot">&lt;-</span> <span class="fu">check.iio</span>(df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>iio1 <span class="ot">&lt;-</span> <span class="fu">check.iio</span>(dfm)</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(iio1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
+<div class="cell-output cell-output-stdout">
+<pre><code>$method
+[1] "MIIO"
+
+$item.summary
+      ItemH #ac #vi #vi/#ac maxvi  sum sum/#ac  tmax #tsig crit
+mhc2   0.57  98   0    0.00  0.00 0.00  0.0000  0.00     0    0
+mhc11  0.56  98   4    0.04  0.27 1.00  0.0102  4.79     4   88
+mhc14  0.60  95  14    0.15  0.91 5.23  0.0551 12.26    14  286
+mhc13  0.53  98   3    0.03  0.50 1.25  0.0127  6.40     3  119
+mhc3   0.56  96   4    0.04  0.45 1.32  0.0137  6.40     4  119
+mhc10  0.53  98   3    0.03  0.55 1.22  0.0125  7.11     3  127
+mhc1   0.53 102  11    0.11  0.91 3.87  0.0380 12.26    11  256
+mhc12  0.56  99   5    0.05  0.31 1.24  0.0125  6.20     5  107
+mhc9   0.56 100   1    0.01  0.19 0.19  0.0019  2.65     1   38
+mhc4   0.51  94   3    0.03  0.35 0.72  0.0077  4.56     2   85
+mhc7   0.47 100   4    0.04  0.35 0.89  0.0089  4.56     3   94
+mhc5   0.45  97   0    0.00  0.00 0.00  0.0000  0.00     0    0
+mhc8   0.50 100   0    0.00  0.00 0.00  0.0000  0.00     0    0
+mhc6   0.53 101   0    0.00  0.00 0.00  0.0000  0.00     0    0
+
+$backward.selection
+      step 1 step 2 step 3 step 4
+mhc2       0      0      0      0
+mhc11      2      1      0      0
+mhc14      8     NA     NA     NA
+mhc13      2      1      0      0
+mhc3       2      1      0      0
+mhc10      2      1      0      0
+mhc1       6      5     NA     NA
+mhc12      2      1      0      0
+mhc9       1      0      0      0
+mhc4       1      1      1      0
+mhc7       2      1      1     NA
+mhc5       0      0      0      0
+mhc8       0      0      0      0
+mhc6       0      0      0      0
+
+$HT
+[1] 0.3866919</code></pre>
+</div>
 </div>
 <blockquote class="blockquote">
 <p>Checking of IIO within the R “mokken” library is done using the function check.iio. Three different method options are available to users – (1) manifest invariant item ordering (MIIO), (2) manifest scale - cumulative probabil- ity mode (MSCPM) and (3) increasingness in transpos- ition (IT).</p>
@@ -603,11 +756,13 @@ mhc14  0.60 156   0       0     0   0       0    0     0    0</code></pre>
 <blockquote class="blockquote">
 <p>The backward selection method can be used to re- move items violating IIO. If there is an equal number of violations for two or more items then the item with the lowest scalability is removed [14]. As an alternative to this exploratory approach, the worst item found to be violating the IIO property can be discarded and IIO of the rest of the items checked again, in iterative steps. Likewise for monotonicity, it is recommended to only remove one item at a time since IIO violations of other items may be influenced by the inclusion or exclusion of any particular item.</p>
 </blockquote>
+</div>
+<div id="tabset-1-5" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-5-tab">
 <div class="cell">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>pmatr1 <span class="ot">&lt;-</span> <span class="fu">check.pmatrix</span>(df)</span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(pmatr1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>pmatr1 <span class="ot">&lt;-</span> <span class="fu">check.pmatrix</span>(dfm)</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(pmatr1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>      ItemH   #ac #vi #vi/#ac maxvi  sum sum/#ac  zmax #zsig crit
@@ -628,14 +783,16 @@ mhc14  0.60 19500 109    0.01  0.07 4.39   2e-04 11.32   109  185</code></pre>
 </div>
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co">#plot(pmatr1)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co">#plot(pmatr1)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
+</div>
+<div id="tabset-1-6" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-6-tab">
 <div class="cell">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>restsc1 <span class="ot">&lt;-</span> <span class="fu">check.restscore</span>(df)</span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(restsc1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>restsc1 <span class="ot">&lt;-</span> <span class="fu">check.restscore</span>(dfm)</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(restsc1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>      ItemH  #ac #vi #vi/#ac maxvi  sum sum/#ac zmax #zsig crit
@@ -656,27 +813,193 @@ mhc14  0.60 2375  64    0.03  0.25 4.89  0.0021 8.01    55  161</code></pre>
 </div>
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co">#plot(restsc1)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co">#plot(restsc1)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <p>the number of significant violations (#zsig).</p>
-<p>The violation found in restscore.com$results[[31]][[3]] is also shown in the graph because the thick solid line and the thick dashed line intersect.</p>
 </div>
 </div>
 </div>
 </section>
-<section id="software-used" class="level2" data-number="4.2">
-<h2 data-number="4.2" class="anchored" data-anchor-id="software-used"><span class="header-section-number">4.2</span> Software used</h2>
+<section id="mokken-2" class="level2" data-number="4.2">
+<h2 data-number="4.2" class="anchored" data-anchor-id="mokken-2"><span class="header-section-number">4.2</span> Mokken 2</h2>
+<p>Based on Rasch results, we remove som items and recode response categories.</p>
 <div class="cell">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>pkgs <span class="ot">&lt;-</span> <span class="fu">cite_packages</span>(<span class="at">cite.tidyverse =</span> <span class="cn">TRUE</span>, </span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>                      <span class="at">output =</span> <span class="st">"table"</span>,</span>
-<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>                      <span class="at">bib.file =</span> <span class="st">"grateful-refs.bib"</span>,</span>
-<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>                      <span class="at">include.RStudio =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>                      <span class="at">out.dir =</span> <span class="fu">getwd</span>())</span>
-<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a><span class="fu">formattable</span>(pkgs, </span>
-<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>            <span class="at">table.attr =</span> <span class="st">'class=</span><span class="sc">\"</span><span class="st">table table-striped</span><span class="sc">\"</span><span class="st"> style="font-size: 15px; font-family: Lato; width: 80%"'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>removed.items <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"mhc3"</span>,<span class="st">"mhc8"</span>,<span class="st">"mhc5"</span>,<span class="st">"mhc6"</span>,<span class="st">"mhc7"</span>,<span class="st">"mhc2"</span>)</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>dfm <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span> </span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">!</span><span class="fu">any_of</span>(removed.items)) <span class="sc">%&gt;%</span> </span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">everything</span>(), <span class="sc">~</span> car<span class="sc">::</span><span class="fu">recode</span>(.x,<span class="st">"3=2;4=3;5=4"</span>))) <span class="sc">%&gt;%</span> </span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">mhc4 =</span> car<span class="sc">::</span><span class="fu">recode</span>(mhc4,<span class="st">"1=0;2=1;3=2;4=3"</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as.matrix</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-2-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-1" role="tab" aria-controls="tabset-2-1" aria-selected="true">monotonicity</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-2" role="tab" aria-controls="tabset-2-2" aria-selected="false">iio/non-intersection</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-3" role="tab" aria-controls="tabset-2-3" aria-selected="false">pmatrix</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-4-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-4" role="tab" aria-controls="tabset-2-4" aria-selected="false">restscore</a></li></ul>
+<div class="tab-content">
+<div id="tabset-2-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-2-1-tab">
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>mon2 <span class="ot">&lt;-</span> <span class="fu">check.monotonicity</span>(dfm)</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(mon2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>      ItemH #ac #vi #vi/#ac maxvi sum sum/#ac zmax #zsig crit
+mhc1   0.53 105   0       0     0   0       0    0     0    0
+mhc4   0.53  84   0       0     0   0       0    0     0    0
+mhc9   0.61 105   0       0     0   0       0    0     0    0
+mhc10  0.58 101   0       0     0   0       0    0     0    0
+mhc11  0.60 105   0       0     0   0       0    0     0    0
+mhc12  0.61  94   0       0     0   0       0    0     0    0
+mhc13  0.60  76   0       0     0   0       0    0     0    0
+mhc14  0.65 112   0       0     0   0       0    0     0    0</code></pre>
+</div>
+</div>
+<div>
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(mon2, <span class="at">ask =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell quarto-layout-panel">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="cell-output-display quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img src="mokken_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img src="mokken_files/figure-html/unnamed-chunk-14-2.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="cell-output-display quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img src="mokken_files/figure-html/unnamed-chunk-14-3.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img src="mokken_files/figure-html/unnamed-chunk-14-4.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="cell-output-display quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img src="mokken_files/figure-html/unnamed-chunk-14-5.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img src="mokken_files/figure-html/unnamed-chunk-14-6.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="cell-output-display quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img src="mokken_files/figure-html/unnamed-chunk-14-7.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img src="mokken_files/figure-html/unnamed-chunk-14-8.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-2-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-2-tab">
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>iio2 <span class="ot">&lt;-</span> <span class="fu">check.iio</span>(dfm)</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(iio2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>$method
+[1] "MIIO"
+
+$item.summary
+      ItemH #ac #vi #vi/#ac maxvi  sum sum/#ac  tmax #tsig crit
+mhc14  0.65  43   9    0.21  0.81 3.04  0.0708 14.26     9  297
+mhc11  0.60  47   3    0.06  0.48 0.99  0.0211  8.76     3  139
+mhc13  0.60  46   3    0.07  0.47 0.95  0.0206  7.69     3  132
+mhc10  0.58  46   3    0.07  0.39 0.94  0.0204  6.82     3  121
+mhc12  0.61  46   4    0.09  0.53 1.21  0.0262  9.75     4  162
+mhc1   0.53  49  10    0.20  0.81 3.54  0.0723 14.26    10  307
+mhc9   0.61  44   2    0.05  0.16 0.29  0.0065  4.47     2   59
+mhc4   0.53  43   0    0.00  0.00 0.00  0.0000  0.00     0    0
+
+$backward.selection
+      step 1 step 2 step 3
+mhc14      6      5     NA
+mhc11      2      1      0
+mhc13      2      1      0
+mhc10      2      1      0
+mhc12      2      1      0
+mhc1       6     NA     NA
+mhc9       2      1      0
+mhc4       0      0      0
+
+$HT
+[1] 0.5405988</code></pre>
+</div>
+</div>
+</div>
+<div id="tabset-2-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-3-tab">
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>pmatr2 <span class="ot">&lt;-</span> <span class="fu">check.pmatrix</span>(dfm)</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(pmatr2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>      ItemH  #ac #vi #vi/#ac maxvi sum sum/#ac zmax #zsig crit
+mhc1   0.53 2688   0       0     0   0       0    0     0    0
+mhc4   0.53 2688   0       0     0   0       0    0     0    0
+mhc9   0.61 2688   0       0     0   0       0    0     0    0
+mhc10  0.58 2688   0       0     0   0       0    0     0    0
+mhc11  0.60 2688   0       0     0   0       0    0     0    0
+mhc12  0.61 2688   0       0     0   0       0    0     0    0
+mhc13  0.60 2688   0       0     0   0       0    0     0    0
+mhc14  0.65 2688   0       0     0   0       0    0     0    0</code></pre>
+</div>
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co">#plot(pmatr2)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+</div>
+<div id="tabset-2-4" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-4-tab">
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>restsc2 <span class="ot">&lt;-</span> <span class="fu">check.restscore</span>(dfm)</span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(restsc2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>      ItemH #ac #vi #vi/#ac maxvi  sum sum/#ac zmax #zsig crit
+mhc1   0.53 784  10    0.01  0.10 0.51   6e-04 3.11     7   53
+mhc4   0.53 688   6    0.01  0.10 0.33   5e-04 5.30     5   57
+mhc9   0.61 704   2    0.00  0.04 0.08   1e-04 2.35     2   19
+mhc10  0.58 736   4    0.01  0.07 0.19   3e-04 3.68     1   28
+mhc11  0.60 752   2    0.00  0.04 0.08   1e-04 3.05     2   23
+mhc12  0.61 736   4    0.01  0.10 0.26   4e-04 3.11     4   38
+mhc13  0.60 736   2    0.00  0.07 0.10   1e-04 3.83     1   25
+mhc14  0.65 688  12    0.02  0.10 0.62   9e-04 5.30     8   62</code></pre>
+</div>
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="co">#plot(restsc2)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="software-used" class="level2" data-number="4.3">
+<h2 data-number="4.3" class="anchored" data-anchor-id="software-used"><span class="header-section-number">4.3</span> Software used</h2>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>pkgs <span class="ot">&lt;-</span> <span class="fu">cite_packages</span>(<span class="at">cite.tidyverse =</span> <span class="cn">TRUE</span>, </span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>                      <span class="at">output =</span> <span class="st">"table"</span>,</span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>                      <span class="at">bib.file =</span> <span class="st">"grateful-refs.bib"</span>,</span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>                      <span class="at">include.RStudio =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a>                      <span class="at">out.dir =</span> <span class="fu">getwd</span>())</span>
+<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a><span class="fu">formattable</span>(pkgs, </span>
+<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a>            <span class="at">table.attr =</span> <span class="st">'class=</span><span class="sc">\"</span><span class="st">table table-striped</span><span class="sc">\"</span><span class="st"> style="font-size: 15px; font-family: Lato; width: 80%"'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 
@@ -943,8 +1266,8 @@ tidyverse
 </div>
 </div>
 </section>
-<section id="references" class="level2" data-number="4.3">
-<h2 data-number="4.3" class="anchored" data-anchor-id="references"><span class="header-section-number">4.3</span> References</h2>
+<section id="references" class="level2" data-number="4.4">
+<h2 data-number="4.4" class="anchored" data-anchor-id="references"><span class="header-section-number">4.4</span> References</h2>
 
 
 <div id="refs" class="references csl-bib-body hanging-indent" role="list">
