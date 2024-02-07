@@ -160,6 +160,10 @@ RItargeting(df)
 #| fig-height: 7
 RIitemHierarchy(df)
 ```
+### DIF
+```{r}
+RIdifTable(df,dif.sex)
+```
 :::
 
 Multidimensionality is indicated by PCA of residuals and residual correlations. Also, item 5 shows high item fit (above MSQ 1.3). Loadings on first residual contrast indicates that items 5-8 form a separate cluster, which is largely in agreement with the residual correlation matrix (items 6-8 are correlated, but not item 5). Items 1-3 are also correlated.
@@ -227,6 +231,10 @@ RItargeting(df2)
 #| fig-height: 7
 RIitemHierarchy(df2)
 ```
+### DIF
+```{r}
+RIdifTable(df2,dif.sex)
+```
 :::
 
 Item 5 still has high levels of item fit, and disordered response categories. Most items have less issues with disordered response categories, but the two lowest are very close together for several items.
@@ -288,6 +296,10 @@ RItargeting(df2)
 ```{r}
 #| fig-height: 7
 RIitemHierarchy(df2)
+```
+### DIF
+```{r}
+RIdifTable(df2,dif.sex)
 ```
 :::
 
