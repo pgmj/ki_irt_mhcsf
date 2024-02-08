@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Magnus Johansson">
-<meta name="dcterms.date" content="2024-02-07">
+<meta name="dcterms.date" content="2024-02-08">
 
 <title>Psychometric analysis of the Mental Health Continuum-Short Form (MHC-SF) - 2&nbsp; Rasch analysis</title>
 <style>
@@ -189,7 +189,7 @@ background: #009ca6;
       <div>
       <div class="quarto-title-meta-heading">Published</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">2024-02-07</p>
+        <p class="date">2024-02-08</p>
       </div>
     </div>
     
@@ -273,7 +273,7 @@ background: #009ca6;
 
 
 
-<div class="cell">
+<div class="cell" data-hash="rasch_cache/html/setup_a776a49255db36a049df92631a59490f">
 <details>
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># one package below requires that you use devtools to install them manually:</span></span>
@@ -311,60 +311,33 @@ background: #009ca6;
 <span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="st">"RISE_theme.R"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div class="cell">
+<div class="cell" data-hash="rasch_cache/html/unnamed-chunk-2_9063f4801fe1cde1db9ca8d7ddf19081">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="do">### import data</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co"># df &lt;- read_excel("data/MasterFile_CLEAN.xlsx") %&gt;% </span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co">#   rename(gender = WhatisyourgenderSelectedChoice,</span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co">#          age = Whatisyourage,</span></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="co">#          citizenship = WhatisyourcitizenshipSelectedChoice) %&gt;% </span></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="co">#   select(gender,age,citizenship,starts_with("mhc")) %&gt;% </span></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="co">#   select(-starts_with("mhc_"))</span></span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="co"># </span></span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="co"># </span><span class="al">###</span><span class="co"> Load item information</span></span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="co"># # make sure that variable names in df match with itemlabels$itemnr</span></span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="co"># itemlabels &lt;- read_excel("data/itemlabels_MHC_SF.xlsx") %&gt;% </span></span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="co">#   mutate(item = str_squish(item))</span></span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="co"># </span></span>
-<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="co"># #---- Create DIF variables----</span></span>
-<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a><span class="co">#   </span></span>
-<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a><span class="co"># # DIF variables into vectors, recoded as factors since DIF functions need this</span></span>
-<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a><span class="co"># dif.gender &lt;- as.factor(df$gender)</span></span>
-<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a><span class="co"># dif.age &lt;- df$age</span></span>
-<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a><span class="co"># dif.citizenship &lt;- as.factor(df$citizenship)</span></span>
-<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a><span class="co"># # then remove them from dataframe, since we need a dataframe with only item data for the Rasch analyses</span></span>
-<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a><span class="co"># df$gender &lt;- NULL</span></span>
-<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a><span class="co"># df$age &lt;- NULL</span></span>
-<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a><span class="co"># df$citizenship &lt;- NULL</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="do">### other, bigger dataset from [@echeverría2017]</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="do">### read file</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>df.all <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"data/data_sMHCSF_Echeverria2017.xlsx"</span>)</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> df.all</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="do">### create dif variables</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>dif.sex <span class="ot">&lt;-</span> <span class="fu">factor</span>(df<span class="sc">$</span>Sex)</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>df<span class="sc">$</span>Sex <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="do">### Load item information</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="co"># make sure that variable names in df match with itemlabels$itemnr</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>itemlabels <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"data/itemlabels_MHC_SF.xlsx"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">item =</span> <span class="fu">str_squish</span>(item))</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(df) <span class="ot">&lt;-</span> itemlabels<span class="sc">$</span>itemnr</span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span></span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">everything</span>(), <span class="sc">~</span> car<span class="sc">::</span><span class="fu">recode</span>(.x,<span class="st">"'Never'=0;'1 or 2 times a month'=1;'About 1 time a week'=2;'About 2 or 3 times a week'=3;'Almost daily'=4;'Daily'=5"</span>, <span class="at">as.factor =</span> <span class="cn">FALSE</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div class="cell">
-<details>
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="do">### other, bigger dataset from [@echeverría2017]</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="do">### read file</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>df.all <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"data/data_sMHCSF_Echeverria2017.xlsx"</span>)</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> df.all</span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="do">### create dif variables</span></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>dif.sex <span class="ot">&lt;-</span> <span class="fu">factor</span>(df<span class="sc">$</span>Sex)</span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>df<span class="sc">$</span>Sex <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="do">### Load item information</span></span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="co"># make sure that variable names in df match with itemlabels$itemnr</span></span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>itemlabels <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"data/itemlabels_MHC_SF.xlsx"</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">item =</span> <span class="fu">str_squish</span>(item))</span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(df) <span class="ot">&lt;-</span> itemlabels<span class="sc">$</span>itemnr</span>
-<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span></span>
-<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">everything</span>(), <span class="sc">~</span> car<span class="sc">::</span><span class="fu">recode</span>(.x,<span class="st">"'Never'=0;'1 or 2 times a month'=1;'About 1 time a week'=2;'About 2 or 3 times a week'=3;'Almost daily'=4;'Daily'=5"</span>, <span class="at">as.factor =</span> <span class="cn">FALSE</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-</div>
+<p>For an overview of the different aspects, model metrics, and cutoff values reported in a Rasch analysis, please see <span class="citation" data-cites="johansson">Johansson et al. (<a href="#ref-johansson" role="doc-biblioref">2023</a>)</span>.</p>
 <section id="rasch-analysis-1" class="level2 page-columns page-full" data-number="2.1">
 <h2 data-number="2.1" class="anchored" data-anchor-id="rasch-analysis-1"><span class="header-section-number">2.1</span> Rasch analysis 1</h2>
 <p>The eRm package, which uses Conditional Maximum Likelihood (CML) estimation, will be used primarily. For this analysis of polytomous data, the Partial Credit Model will be used.</p>
-<div class="cell page-columns page-full">
+<div class="cell page-columns page-full" data-hash="rasch_cache/html/unnamed-chunk-3_37123dd16e5b1520ceb34923c7807712">
 
 <div class="no-row-height column-margin column-container"><div class="cell-output-display">
 
@@ -500,10 +473,10 @@ That your life has a sense of direction or meaning to it?
 <ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true">Item fit</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false">PCA</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-3" role="tab" aria-controls="tabset-1-3" aria-selected="false">Residual correlations</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-4-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-4" role="tab" aria-controls="tabset-1-4" aria-selected="false">1st contrast loadings</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-5-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-5" role="tab" aria-controls="tabset-1-5" aria-selected="false">Response categories (ICC)</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-6-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-6" role="tab" aria-controls="tabset-1-6" aria-selected="false">Targeting</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-7-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-7" role="tab" aria-controls="tabset-1-7" aria-selected="false">Item hierarchy</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-8-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-8" role="tab" aria-controls="tabset-1-8" aria-selected="false">DIF</a></li></ul>
 <div class="tab-content">
 <div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
-<div class="cell">
+<div class="cell" data-hash="rasch_cache/html/unnamed-chunk-4_6ae7aaeecaad5b28dd3159c5d945d70e">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">RIitemfitPCM2</span>(df, <span class="dv">250</span>, <span class="dv">24</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">RIitemfitPCM2</span>(df, <span class="dv">250</span>, <span class="dv">24</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 
@@ -522,99 +495,99 @@ That your life has a sense of direction or meaning to it?
    <td style="text-align:left;font-weight: bold;"> mhc1 </td>
    <td style="text-align:left;"> <span style="     color: black !important;">0.894</span> </td>
    <td style="text-align:left;"> <span style="     color: black !important;">0.889</span> </td>
-   <td style="text-align:left;"> <span style="     color: black !important;">-1.292</span> </td>
-   <td style="text-align:left;"> <span style="     color: black !important;">-1.363</span> </td>
+   <td style="text-align:left;"> <span style="     color: black !important;">-1.202</span> </td>
+   <td style="text-align:left;"> <span style="     color: black !important;">-1.172</span> </td>
   </tr>
   <tr>
    <td style="text-align:left;font-weight: bold;"> mhc2 </td>
    <td style="text-align:left;"> <span style="     color: black !important;">0.723</span> </td>
    <td style="text-align:left;"> <span style="     color: black !important;">0.788</span> </td>
-   <td style="text-align:left;"> <span style="     color: red !important;">-2.388</span> </td>
-   <td style="text-align:left;"> <span style="     color: red !important;">-2.26</span> </td>
+   <td style="text-align:left;"> <span style="     color: red !important;">-2.499</span> </td>
+   <td style="text-align:left;"> <span style="     color: red !important;">-2.1</span> </td>
   </tr>
   <tr>
    <td style="text-align:left;font-weight: bold;"> mhc3 </td>
    <td style="text-align:left;"> <span style="     color: black !important;">0.784</span> </td>
    <td style="text-align:left;"> <span style="     color: black !important;">0.802</span> </td>
-   <td style="text-align:left;"> <span style="     color: red !important;">-2.48</span> </td>
-   <td style="text-align:left;"> <span style="     color: red !important;">-2.122</span> </td>
+   <td style="text-align:left;"> <span style="     color: red !important;">-2.26</span> </td>
+   <td style="text-align:left;"> <span style="     color: black !important;">-1.882</span> </td>
   </tr>
   <tr>
    <td style="text-align:left;font-weight: bold;"> mhc4 </td>
    <td style="text-align:left;"> <span style="     color: black !important;">1.086</span> </td>
    <td style="text-align:left;"> <span style="     color: black !important;">1.059</span> </td>
-   <td style="text-align:left;"> <span style="     color: black !important;">0.469</span> </td>
-   <td style="text-align:left;"> <span style="     color: black !important;">0.667</span> </td>
+   <td style="text-align:left;"> <span style="     color: black !important;">1.17</span> </td>
+   <td style="text-align:left;"> <span style="     color: black !important;">0.088</span> </td>
   </tr>
   <tr>
    <td style="text-align:left;font-weight: bold;"> mhc5 </td>
    <td style="text-align:left;"> <span style="     color: red !important;">1.612</span> </td>
    <td style="text-align:left;"> <span style="     color: red !important;">1.44</span> </td>
-   <td style="text-align:left;"> <span style="     color: red !important;">4.016</span> </td>
-   <td style="text-align:left;"> <span style="     color: red !important;">4.073</span> </td>
+   <td style="text-align:left;"> <span style="     color: red !important;">4.028</span> </td>
+   <td style="text-align:left;"> <span style="     color: red !important;">4.278</span> </td>
   </tr>
   <tr>
    <td style="text-align:left;font-weight: bold;"> mhc6 </td>
    <td style="text-align:left;"> <span style="     color: black !important;">0.951</span> </td>
    <td style="text-align:left;"> <span style="     color: black !important;">0.952</span> </td>
-   <td style="text-align:left;"> <span style="     color: black !important;">-0.479</span> </td>
-   <td style="text-align:left;"> <span style="     color: black !important;">-0.227</span> </td>
+   <td style="text-align:left;"> <span style="     color: black !important;">-0.206</span> </td>
+   <td style="text-align:left;"> <span style="     color: black !important;">-0.748</span> </td>
   </tr>
   <tr>
    <td style="text-align:left;font-weight: bold;"> mhc7 </td>
    <td style="text-align:left;"> <span style="     color: black !important;">1.153</span> </td>
    <td style="text-align:left;"> <span style="     color: black !important;">1.138</span> </td>
-   <td style="text-align:left;"> <span style="     color: black !important;">1.479</span> </td>
-   <td style="text-align:left;"> <span style="     color: black !important;">1.74</span> </td>
+   <td style="text-align:left;"> <span style="     color: black !important;">1.337</span> </td>
+   <td style="text-align:left;"> <span style="     color: black !important;">1.518</span> </td>
   </tr>
   <tr>
    <td style="text-align:left;font-weight: bold;"> mhc8 </td>
    <td style="text-align:left;"> <span style="     color: black !important;">1.096</span> </td>
    <td style="text-align:left;"> <span style="     color: black !important;">1.089</span> </td>
-   <td style="text-align:left;"> <span style="     color: black !important;">1.398</span> </td>
-   <td style="text-align:left;"> <span style="     color: black !important;">1.068</span> </td>
+   <td style="text-align:left;"> <span style="     color: black !important;">0.593</span> </td>
+   <td style="text-align:left;"> <span style="     color: black !important;">1.112</span> </td>
   </tr>
   <tr>
    <td style="text-align:left;font-weight: bold;"> mhc9 </td>
    <td style="text-align:left;"> <span style="     color: black !important;">0.815</span> </td>
    <td style="text-align:left;"> <span style="     color: black !important;">0.815</span> </td>
-   <td style="text-align:left;"> <span style="     color: black !important;">-1.763</span> </td>
-   <td style="text-align:left;"> <span style="     color: red !important;">-2.057</span> </td>
+   <td style="text-align:left;"> <span style="     color: black !important;">-1.736</span> </td>
+   <td style="text-align:left;"> <span style="     color: red !important;">-2.163</span> </td>
   </tr>
   <tr>
    <td style="text-align:left;font-weight: bold;"> mhc10 </td>
    <td style="text-align:left;"> <span style="     color: black !important;">0.899</span> </td>
    <td style="text-align:left;"> <span style="     color: black !important;">0.913</span> </td>
-   <td style="text-align:left;"> <span style="     color: black !important;">-0.995</span> </td>
-   <td style="text-align:left;"> <span style="     color: black !important;">-0.993</span> </td>
+   <td style="text-align:left;"> <span style="     color: black !important;">-1.033</span> </td>
+   <td style="text-align:left;"> <span style="     color: black !important;">-0.966</span> </td>
   </tr>
   <tr>
    <td style="text-align:left;font-weight: bold;"> mhc11 </td>
    <td style="text-align:left;"> <span style="     color: black !important;">0.806</span> </td>
    <td style="text-align:left;"> <span style="     color: black !important;">0.818</span> </td>
-   <td style="text-align:left;"> <span style="     color: red !important;">-2.028</span> </td>
-   <td style="text-align:left;"> <span style="     color: red !important;">-2.391</span> </td>
+   <td style="text-align:left;"> <span style="     color: red !important;">-2.063</span> </td>
+   <td style="text-align:left;"> <span style="     color: black !important;">-1.769</span> </td>
   </tr>
   <tr>
    <td style="text-align:left;font-weight: bold;"> mhc12 </td>
    <td style="text-align:left;"> <span style="     color: black !important;">0.821</span> </td>
    <td style="text-align:left;"> <span style="     color: black !important;">0.822</span> </td>
-   <td style="text-align:left;"> <span style="     color: black !important;">-1.593</span> </td>
-   <td style="text-align:left;"> <span style="     color: red !important;">-2.021</span> </td>
+   <td style="text-align:left;"> <span style="     color: black !important;">-1.832</span> </td>
+   <td style="text-align:left;"> <span style="     color: black !important;">-1.918</span> </td>
   </tr>
   <tr>
    <td style="text-align:left;font-weight: bold;"> mhc13 </td>
    <td style="text-align:left;"> <span style="     color: black !important;">0.921</span> </td>
    <td style="text-align:left;"> <span style="     color: black !important;">0.934</span> </td>
-   <td style="text-align:left;"> <span style="     color: black !important;">-0.754</span> </td>
-   <td style="text-align:left;"> <span style="     color: black !important;">-0.869</span> </td>
+   <td style="text-align:left;"> <span style="     color: black !important;">-0.792</span> </td>
+   <td style="text-align:left;"> <span style="     color: black !important;">-0.787</span> </td>
   </tr>
   <tr>
    <td style="text-align:left;font-weight: bold;"> mhc14 </td>
    <td style="text-align:left;"> <span style="     color: red !important;">0.671</span> </td>
    <td style="text-align:left;"> <span style="     color: black !important;">0.707</span> </td>
-   <td style="text-align:left;"> <span style="     color: red !important;">-3.1</span> </td>
-   <td style="text-align:left;"> <span style="     color: red !important;">-3.363</span> </td>
+   <td style="text-align:left;"> <span style="     color: red !important;">-3.011</span> </td>
+   <td style="text-align:left;"> <span style="     color: red !important;">-3.264</span> </td>
   </tr>
 </tbody>
 </table>
@@ -623,10 +596,10 @@ That your life has a sense of direction or meaning to it?
 </div>
 </div>
 <div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
-<div class="cell">
+<div class="cell" data-hash="rasch_cache/html/unnamed-chunk-5_5de1a1782d993728800384ece5d1258e">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">RIpcmPCA</span>(df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">RIpcmPCA</span>(df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 
@@ -659,10 +632,10 @@ That your life has a sense of direction or meaning to it?
 </div>
 </div>
 <div id="tabset-1-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-3-tab">
-<div class="cell">
+<div class="cell" data-hash="rasch_cache/html/unnamed-chunk-6_f0dd2cdb6874022ec0a36656b7eb8ffa">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">RIresidcorr</span>(df, <span class="at">cutoff =</span> <span class="fl">0.2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">RIresidcorr</span>(df, <span class="at">cutoff =</span> <span class="fl">0.2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 
@@ -937,60 +910,60 @@ That your life has a sense of direction or meaning to it?
 </div>
 </div>
 <div id="tabset-1-4" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-4-tab">
-<div class="cell">
+<div class="cell" data-hash="rasch_cache/html/unnamed-chunk-7_2d71f72a2438cc8821be9cf738fe5766">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">RIloadLoc</span>(df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">RIloadLoc</span>(df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="rasch_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</div>
+<div id="tabset-1-5" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-5-tab">
+<div class="cell" data-hash="rasch_cache/html/unnamed-chunk-8_ba847eff1e0c4d5dd211e2725ea8bbd8">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mirt</span>(df, <span class="at">model=</span><span class="dv">1</span>, <span class="at">itemtype=</span><span class="st">'Rasch'</span>, <span class="at">verbose =</span> <span class="cn">FALSE</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot</span>(<span class="at">type=</span><span class="st">"trace"</span>, <span class="at">as.table =</span> <span class="cn">TRUE</span>, </span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>       <span class="at">theta_lim =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">6</span>,<span class="dv">6</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <p><img src="rasch_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 </div>
-<div id="tabset-1-5" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-5-tab">
-<div class="cell">
+<div id="tabset-1-6" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-6-tab">
+<div class="cell" data-hash="rasch_cache/html/unnamed-chunk-9_79ca3a899ada1ee754ea94aeda25af72">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mirt</span>(df, <span class="at">model=</span><span class="dv">1</span>, <span class="at">itemtype=</span><span class="st">'Rasch'</span>, <span class="at">verbose =</span> <span class="cn">FALSE</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot</span>(<span class="at">type=</span><span class="st">"trace"</span>, <span class="at">as.table =</span> <span class="cn">TRUE</span>, </span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>       <span class="at">theta_lim =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">6</span>,<span class="dv">6</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># increase fig-height above as needed, if you have many items</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">RItargeting</span>(df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <p><img src="rasch_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 </div>
-<div id="tabset-1-6" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-6-tab">
-<div class="cell">
+<div id="tabset-1-7" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-7-tab">
+<div class="cell" data-hash="rasch_cache/html/unnamed-chunk-10_6a4c3a8b6f021d9d2b66985f60615163">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># increase fig-height above as needed, if you have many items</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">RItargeting</span>(df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">RIitemHierarchy</span>(df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <p><img src="rasch_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 </div>
-<div id="tabset-1-7" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-7-tab">
-<div class="cell">
+<div id="tabset-1-8" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-8-tab">
+<div class="cell" data-hash="rasch_cache/html/unnamed-chunk-11_e911127e6746035b46af9d4dc60d4353">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">RIitemHierarchy</span>(df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">RIdifTable</span>(df,dif.sex)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <p><img src="rasch_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid" width="672"></p>
-</div>
-</div>
-</div>
-<div id="tabset-1-8" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-8-tab">
-<div class="cell">
-<details>
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">RIdifTable</span>(df,dif.sex)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output-display">
-<p><img src="rasch_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid" width="672"></p>
 </div>
 <div class="cell-output-display">
 
@@ -1309,7 +1282,14 @@ mhc14
 <p>Multidimensionality is indicated by PCA of residuals and residual correlations. Also, item 5 shows high item fit (above MSQ 1.3). Loadings on first residual contrast indicates that items 5-8 form a separate cluster, which is largely in agreement with the residual correlation matrix (items 6-8 are correlated, but not item 5). Items 1-3 are also correlated.</p>
 <p>All items have disordered thresholds except 1 and 2, and both of those have very small distances between thresholds.</p>
 <p>We’ll remove one item from each cluster, based on the level of correlations, which results in the removal of items 3 and 8.</p>
-<p>Also, we’ll merge the response categories:</p>
+<p>Aspects to consider when choosing between two items with strong residual correlations include:</p>
+<ul>
+<li>item fit</li>
+<li>item targeting properties</li>
+<li>ordering of thresholds</li>
+<li>DIF</li>
+</ul>
+<p>Also, we’ll merge the two middle response categories:</p>
 <ul>
 <li>‘About 1 time a week’,</li>
 <li>‘About 2 or 3 times a week’,</li>
@@ -1317,21 +1297,21 @@ mhc14
 </section>
 <section id="rasch-2" class="level2 page-columns page-full" data-number="2.2">
 <h2 data-number="2.2" class="anchored" data-anchor-id="rasch-2"><span class="header-section-number">2.2</span> Rasch 2</h2>
-<div class="cell">
+<div class="cell" data-hash="rasch_cache/html/unnamed-chunk-12_ee2993d56c149980f30ce588349f6b96">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>removed.items <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"mhc3"</span>,<span class="st">"mhc8"</span>)</span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>df2 <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span> </span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">!</span><span class="fu">any_of</span>(removed.items)) <span class="sc">%&gt;%</span> </span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">everything</span>(), <span class="sc">~</span> car<span class="sc">::</span><span class="fu">recode</span>(.x,<span class="st">"3=2;4=3;5=4"</span>)))</span>
-<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a><span class="fu">RIbarstack</span>(df2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>removed.items <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"mhc3"</span>,<span class="st">"mhc8"</span>)</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>df2 <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span> </span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">!</span><span class="fu">any_of</span>(removed.items)) <span class="sc">%&gt;%</span> </span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">everything</span>(), <span class="sc">~</span> car<span class="sc">::</span><span class="fu">recode</span>(.x,<span class="st">"3=2;4=3;5=4"</span>)))</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="fu">RIbarstack</span>(df2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
-<p><img src="rasch_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid" width="672"></p>
+<p><img src="rasch_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
-<div class="cell page-columns page-full">
+<div class="cell page-columns page-full" data-hash="rasch_cache/html/unnamed-chunk-13_065dc372be439383ed637b7b58c8ad8a">
 
 <div class="no-row-height column-margin column-container"><div class="cell-output-display">
 
@@ -1451,10 +1431,10 @@ That your life has a sense of direction or meaning to it?
 <ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-2-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-1" role="tab" aria-controls="tabset-2-1" aria-selected="true">Item fit</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-2" role="tab" aria-controls="tabset-2-2" aria-selected="false">PCA</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-3" role="tab" aria-controls="tabset-2-3" aria-selected="false">Residual correlations</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-4-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-4" role="tab" aria-controls="tabset-2-4" aria-selected="false">1st contrast loadings</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-5-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-5" role="tab" aria-controls="tabset-2-5" aria-selected="false">Response categories (ICC)</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-6-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-6" role="tab" aria-controls="tabset-2-6" aria-selected="false">Targeting</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-7-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-7" role="tab" aria-controls="tabset-2-7" aria-selected="false">Item hierarchy</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-8-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-8" role="tab" aria-controls="tabset-2-8" aria-selected="false">DIF</a></li></ul>
 <div class="tab-content">
 <div id="tabset-2-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-2-1-tab">
-<div class="cell">
+<div class="cell" data-hash="rasch_cache/html/unnamed-chunk-14_94b58028b803ad30b26447f854f2d0da">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">RIitemfitPCM2</span>(df2, <span class="dv">250</span>, <span class="dv">24</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">RIitemfitPCM2</span>(df2, <span class="dv">250</span>, <span class="dv">24</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 
@@ -1473,85 +1453,85 @@ That your life has a sense of direction or meaning to it?
    <td style="text-align:left;font-weight: bold;"> mhc1 </td>
    <td style="text-align:left;"> <span style="     color: black !important;">0.887</span> </td>
    <td style="text-align:left;"> <span style="     color: black !important;">0.886</span> </td>
-   <td style="text-align:left;"> <span style="     color: black !important;">-1.129</span> </td>
-   <td style="text-align:left;"> <span style="     color: black !important;">-1.285</span> </td>
+   <td style="text-align:left;"> <span style="     color: black !important;">-1.041</span> </td>
+   <td style="text-align:left;"> <span style="     color: black !important;">-1.41</span> </td>
   </tr>
   <tr>
    <td style="text-align:left;font-weight: bold;"> mhc2 </td>
    <td style="text-align:left;"> <span style="     color: black !important;">0.769</span> </td>
    <td style="text-align:left;"> <span style="     color: black !important;">0.82</span> </td>
-   <td style="text-align:left;"> <span style="     color: black !important;">-1.971</span> </td>
-   <td style="text-align:left;"> <span style="     color: red !important;">-2.133</span> </td>
+   <td style="text-align:left;"> <span style="     color: red !important;">-2.018</span> </td>
+   <td style="text-align:left;"> <span style="     color: red !important;">-2.234</span> </td>
   </tr>
   <tr>
    <td style="text-align:left;font-weight: bold;"> mhc4 </td>
    <td style="text-align:left;"> <span style="     color: black !important;">1.023</span> </td>
    <td style="text-align:left;"> <span style="     color: black !important;">1.019</span> </td>
-   <td style="text-align:left;"> <span style="     color: black !important;">0.031</span> </td>
-   <td style="text-align:left;"> <span style="     color: black !important;">-0.198</span> </td>
+   <td style="text-align:left;"> <span style="     color: black !important;">-0.075</span> </td>
+   <td style="text-align:left;"> <span style="     color: black !important;">0.244</span> </td>
   </tr>
   <tr>
    <td style="text-align:left;font-weight: bold;"> mhc5 </td>
    <td style="text-align:left;"> <span style="     color: red !important;">1.448</span> </td>
    <td style="text-align:left;"> <span style="     color: red !important;">1.381</span> </td>
-   <td style="text-align:left;"> <span style="     color: red !important;">2.932</span> </td>
-   <td style="text-align:left;"> <span style="     color: red !important;">3.671</span> </td>
+   <td style="text-align:left;"> <span style="     color: red !important;">3.173</span> </td>
+   <td style="text-align:left;"> <span style="     color: red !important;">3.411</span> </td>
   </tr>
   <tr>
    <td style="text-align:left;font-weight: bold;"> mhc6 </td>
    <td style="text-align:left;"> <span style="     color: black !important;">1.041</span> </td>
    <td style="text-align:left;"> <span style="     color: black !important;">1.049</span> </td>
-   <td style="text-align:left;"> <span style="     color: black !important;">0.556</span> </td>
-   <td style="text-align:left;"> <span style="     color: black !important;">0.725</span> </td>
+   <td style="text-align:left;"> <span style="     color: black !important;">0.324</span> </td>
+   <td style="text-align:left;"> <span style="     color: black !important;">0.659</span> </td>
   </tr>
   <tr>
    <td style="text-align:left;font-weight: bold;"> mhc7 </td>
    <td style="text-align:left;"> <span style="     color: black !important;">1.184</span> </td>
    <td style="text-align:left;"> <span style="     color: black !important;">1.171</span> </td>
-   <td style="text-align:left;"> <span style="     color: red !important;">2.017</span> </td>
-   <td style="text-align:left;"> <span style="     color: black !important;">1.991</span> </td>
+   <td style="text-align:left;"> <span style="     color: red !important;">2.218</span> </td>
+   <td style="text-align:left;"> <span style="     color: black !important;">1.896</span> </td>
   </tr>
   <tr>
    <td style="text-align:left;font-weight: bold;"> mhc9 </td>
    <td style="text-align:left;"> <span style="     color: black !important;">0.809</span> </td>
    <td style="text-align:left;"> <span style="     color: black !important;">0.8</span> </td>
-   <td style="text-align:left;"> <span style="     color: red !important;">-2.54</span> </td>
-   <td style="text-align:left;"> <span style="     color: red !important;">-2.188</span> </td>
+   <td style="text-align:left;"> <span style="     color: red !important;">-2.448</span> </td>
+   <td style="text-align:left;"> <span style="     color: red !important;">-2.642</span> </td>
   </tr>
   <tr>
    <td style="text-align:left;font-weight: bold;"> mhc10 </td>
    <td style="text-align:left;"> <span style="     color: black !important;">0.908</span> </td>
    <td style="text-align:left;"> <span style="     color: black !important;">0.901</span> </td>
-   <td style="text-align:left;"> <span style="     color: black !important;">-0.678</span> </td>
-   <td style="text-align:left;"> <span style="     color: black !important;">-1.32</span> </td>
+   <td style="text-align:left;"> <span style="     color: black !important;">-0.991</span> </td>
+   <td style="text-align:left;"> <span style="     color: black !important;">-0.967</span> </td>
   </tr>
   <tr>
    <td style="text-align:left;font-weight: bold;"> mhc11 </td>
    <td style="text-align:left;"> <span style="     color: black !important;">0.772</span> </td>
    <td style="text-align:left;"> <span style="     color: black !important;">0.783</span> </td>
-   <td style="text-align:left;"> <span style="     color: red !important;">-3</span> </td>
-   <td style="text-align:left;"> <span style="     color: red !important;">-2.614</span> </td>
+   <td style="text-align:left;"> <span style="     color: red !important;">-2.461</span> </td>
+   <td style="text-align:left;"> <span style="     color: red !important;">-2.51</span> </td>
   </tr>
   <tr>
    <td style="text-align:left;font-weight: bold;"> mhc12 </td>
    <td style="text-align:left;"> <span style="     color: black !important;">0.781</span> </td>
    <td style="text-align:left;"> <span style="     color: black !important;">0.782</span> </td>
-   <td style="text-align:left;"> <span style="     color: red !important;">-2.467</span> </td>
-   <td style="text-align:left;"> <span style="     color: red !important;">-2.646</span> </td>
+   <td style="text-align:left;"> <span style="     color: red !important;">-2.523</span> </td>
+   <td style="text-align:left;"> <span style="     color: red !important;">-2.555</span> </td>
   </tr>
   <tr>
    <td style="text-align:left;font-weight: bold;"> mhc13 </td>
    <td style="text-align:left;"> <span style="     color: black !important;">0.871</span> </td>
    <td style="text-align:left;"> <span style="     color: black !important;">0.88</span> </td>
-   <td style="text-align:left;"> <span style="     color: black !important;">-1.189</span> </td>
-   <td style="text-align:left;"> <span style="     color: black !important;">-1.389</span> </td>
+   <td style="text-align:left;"> <span style="     color: black !important;">-1.455</span> </td>
+   <td style="text-align:left;"> <span style="     color: black !important;">-1.485</span> </td>
   </tr>
   <tr>
    <td style="text-align:left;font-weight: bold;"> mhc14 </td>
    <td style="text-align:left;"> <span style="     color: red !important;">0.667</span> </td>
    <td style="text-align:left;"> <span style="     color: red !important;">0.691</span> </td>
-   <td style="text-align:left;"> <span style="     color: red !important;">-3.319</span> </td>
-   <td style="text-align:left;"> <span style="     color: red !important;">-3.726</span> </td>
+   <td style="text-align:left;"> <span style="     color: red !important;">-3.134</span> </td>
+   <td style="text-align:left;"> <span style="     color: red !important;">-3.536</span> </td>
   </tr>
 </tbody>
 </table>
@@ -1560,10 +1540,10 @@ That your life has a sense of direction or meaning to it?
 </div>
 </div>
 <div id="tabset-2-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-2-tab">
-<div class="cell">
+<div class="cell" data-hash="rasch_cache/html/unnamed-chunk-15_f0ba5469a2ddadc6589941cc77aa51f5">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">RIpcmPCA</span>(df2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">RIpcmPCA</span>(df2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 
@@ -1596,10 +1576,10 @@ That your life has a sense of direction or meaning to it?
 </div>
 </div>
 <div id="tabset-2-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-3-tab">
-<div class="cell">
+<div class="cell" data-hash="rasch_cache/html/unnamed-chunk-16_c1fc5069f4c54ca55eaef0e6faee0bdf">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">RIresidcorr</span>(df2, <span class="at">cutoff =</span> <span class="fl">0.2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">RIresidcorr</span>(df2, <span class="at">cutoff =</span> <span class="fl">0.2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 
@@ -1814,60 +1794,60 @@ That your life has a sense of direction or meaning to it?
 </div>
 </div>
 <div id="tabset-2-4" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-4-tab">
-<div class="cell">
+<div class="cell" data-hash="rasch_cache/html/unnamed-chunk-17_d238ad7e42bfecce0d82d2e2f35e3582">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">RIloadLoc</span>(df2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">RIloadLoc</span>(df2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="rasch_files/figure-html/unnamed-chunk-17-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</div>
+<div id="tabset-2-5" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-5-tab">
+<div class="cell" data-hash="rasch_cache/html/unnamed-chunk-18_349843926e4a3ca6df3edd4cefc876ad">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mirt</span>(df2, <span class="at">model=</span><span class="dv">1</span>, <span class="at">itemtype=</span><span class="st">'Rasch'</span>, <span class="at">verbose =</span> <span class="cn">FALSE</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot</span>(<span class="at">type=</span><span class="st">"trace"</span>, <span class="at">as.table =</span> <span class="cn">TRUE</span>, </span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>       <span class="at">theta_lim =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">6</span>,<span class="dv">6</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <p><img src="rasch_files/figure-html/unnamed-chunk-18-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 </div>
-<div id="tabset-2-5" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-5-tab">
-<div class="cell">
+<div id="tabset-2-6" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-6-tab">
+<div class="cell" data-hash="rasch_cache/html/unnamed-chunk-19_68aae81d96b26a8edc77460f8d7c9a2b">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mirt</span>(df2, <span class="at">model=</span><span class="dv">1</span>, <span class="at">itemtype=</span><span class="st">'Rasch'</span>, <span class="at">verbose =</span> <span class="cn">FALSE</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot</span>(<span class="at">type=</span><span class="st">"trace"</span>, <span class="at">as.table =</span> <span class="cn">TRUE</span>, </span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>       <span class="at">theta_lim =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">6</span>,<span class="dv">6</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># increase fig-height above as needed, if you have many items</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="fu">RItargeting</span>(df2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <p><img src="rasch_files/figure-html/unnamed-chunk-19-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 </div>
-<div id="tabset-2-6" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-6-tab">
-<div class="cell">
+<div id="tabset-2-7" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-7-tab">
+<div class="cell" data-hash="rasch_cache/html/unnamed-chunk-20_12afab7ebeb13648788c126028e2c986">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># increase fig-height above as needed, if you have many items</span></span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="fu">RItargeting</span>(df2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">RIitemHierarchy</span>(df2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <p><img src="rasch_files/figure-html/unnamed-chunk-20-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 </div>
-<div id="tabset-2-7" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-7-tab">
-<div class="cell">
+<div id="tabset-2-8" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-8-tab">
+<div class="cell" data-hash="rasch_cache/html/unnamed-chunk-21_e12637f25e68af54d627ab343dc9fa1c">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">RIitemHierarchy</span>(df2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">RIdifTable</span>(df2,dif.sex)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <p><img src="rasch_files/figure-html/unnamed-chunk-21-1.png" class="img-fluid" width="672"></p>
-</div>
-</div>
-</div>
-<div id="tabset-2-8" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-8-tab">
-<div class="cell">
-<details>
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">RIdifTable</span>(df2,dif.sex)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output-display">
-<p><img src="rasch_files/figure-html/unnamed-chunk-22-1.png" class="img-fluid" width="672"></p>
 </div>
 <div class="cell-output-display">
 
@@ -2149,18 +2129,18 @@ mhc14
 </section>
 <section id="rasch-3" class="level2 page-columns page-full" data-number="2.3">
 <h2 data-number="2.3" class="anchored" data-anchor-id="rasch-3"><span class="header-section-number">2.3</span> Rasch 3</h2>
-<div class="cell">
+<div class="cell" data-hash="rasch_cache/html/unnamed-chunk-22_cd3246f4b2ec737142ad2d5559375c15">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>removed.items <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"mhc3"</span>,<span class="st">"mhc8"</span>,<span class="st">"mhc5"</span>,<span class="st">"mhc6"</span>)</span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>df2 <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span> </span>
-<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">!</span><span class="fu">any_of</span>(removed.items)) <span class="sc">%&gt;%</span> </span>
-<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">everything</span>(), <span class="sc">~</span> car<span class="sc">::</span><span class="fu">recode</span>(.x,<span class="st">"3=2;4=3;5=4"</span>)))</span>
-<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a><span class="co">#RIbarstack(df2)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>removed.items <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"mhc3"</span>,<span class="st">"mhc8"</span>,<span class="st">"mhc5"</span>,<span class="st">"mhc6"</span>)</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>df2 <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span> </span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">!</span><span class="fu">any_of</span>(removed.items)) <span class="sc">%&gt;%</span> </span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">everything</span>(), <span class="sc">~</span> car<span class="sc">::</span><span class="fu">recode</span>(.x,<span class="st">"3=2;4=3;5=4"</span>)))</span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a><span class="co">#RIbarstack(df2)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div class="cell page-columns page-full">
+<div class="cell page-columns page-full" data-hash="rasch_cache/html/unnamed-chunk-23_11af2f40aa73538e8c4fd29b5572fcc5">
 
 <div class="no-row-height column-margin column-container"><div class="cell-output-display">
 
@@ -2264,10 +2244,10 @@ That your life has a sense of direction or meaning to it?
 <ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-3-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-1" role="tab" aria-controls="tabset-3-1" aria-selected="true">Item fit</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-3-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-2" role="tab" aria-controls="tabset-3-2" aria-selected="false">PCA</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-3-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-3" role="tab" aria-controls="tabset-3-3" aria-selected="false">Residual correlations</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-3-4-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-4" role="tab" aria-controls="tabset-3-4" aria-selected="false">1st contrast loadings</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-3-5-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-5" role="tab" aria-controls="tabset-3-5" aria-selected="false">Response categories (ICC)</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-3-6-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-6" role="tab" aria-controls="tabset-3-6" aria-selected="false">Targeting</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-3-7-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-7" role="tab" aria-controls="tabset-3-7" aria-selected="false">Item hierarchy</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-3-8-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-8" role="tab" aria-controls="tabset-3-8" aria-selected="false">DIF</a></li></ul>
 <div class="tab-content">
 <div id="tabset-3-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-3-1-tab">
-<div class="cell">
+<div class="cell" data-hash="rasch_cache/html/unnamed-chunk-24_869b3e9517f8b991f427944b5aa1ea69">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">RIitemfitPCM2</span>(df2, <span class="dv">250</span>, <span class="dv">24</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">RIitemfitPCM2</span>(df2, <span class="dv">250</span>, <span class="dv">24</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 
@@ -2286,71 +2266,71 @@ That your life has a sense of direction or meaning to it?
    <td style="text-align:left;font-weight: bold;"> mhc1 </td>
    <td style="text-align:left;"> <span style="     color: black !important;">0.91</span> </td>
    <td style="text-align:left;"> <span style="     color: black !important;">0.912</span> </td>
-   <td style="text-align:left;"> <span style="     color: black !important;">-1.185</span> </td>
-   <td style="text-align:left;"> <span style="     color: black !important;">-0.746</span> </td>
+   <td style="text-align:left;"> <span style="     color: black !important;">-0.858</span> </td>
+   <td style="text-align:left;"> <span style="     color: black !important;">-1.111</span> </td>
   </tr>
   <tr>
    <td style="text-align:left;font-weight: bold;"> mhc2 </td>
    <td style="text-align:left;"> <span style="     color: black !important;">0.797</span> </td>
    <td style="text-align:left;"> <span style="     color: black !important;">0.858</span> </td>
-   <td style="text-align:left;"> <span style="     color: black !important;">-1.841</span> </td>
-   <td style="text-align:left;"> <span style="     color: black !important;">-1.516</span> </td>
+   <td style="text-align:left;"> <span style="     color: black !important;">-1.657</span> </td>
+   <td style="text-align:left;"> <span style="     color: black !important;">-1.916</span> </td>
   </tr>
   <tr>
    <td style="text-align:left;font-weight: bold;"> mhc4 </td>
    <td style="text-align:left;"> <span style="     color: black !important;">1.202</span> </td>
    <td style="text-align:left;"> <span style="     color: black !important;">1.193</span> </td>
-   <td style="text-align:left;"> <span style="     color: red !important;">2.062</span> </td>
-   <td style="text-align:left;"> <span style="     color: red !important;">2.04</span> </td>
+   <td style="text-align:left;"> <span style="     color: red !important;">2.086</span> </td>
+   <td style="text-align:left;"> <span style="     color: black !important;">1.828</span> </td>
   </tr>
   <tr>
    <td style="text-align:left;font-weight: bold;"> mhc7 </td>
    <td style="text-align:left;"> <span style="     color: red !important;">1.396</span> </td>
    <td style="text-align:left;"> <span style="     color: red !important;">1.379</span> </td>
-   <td style="text-align:left;"> <span style="     color: red !important;">4.051</span> </td>
-   <td style="text-align:left;"> <span style="     color: red !important;">3.802</span> </td>
+   <td style="text-align:left;"> <span style="     color: red !important;">4.182</span> </td>
+   <td style="text-align:left;"> <span style="     color: red !important;">4.48</span> </td>
   </tr>
   <tr>
    <td style="text-align:left;font-weight: bold;"> mhc9 </td>
    <td style="text-align:left;"> <span style="     color: black !important;">0.793</span> </td>
    <td style="text-align:left;"> <span style="     color: black !important;">0.783</span> </td>
-   <td style="text-align:left;"> <span style="     color: black !important;">-1.95</span> </td>
-   <td style="text-align:left;"> <span style="     color: red !important;">-2.866</span> </td>
+   <td style="text-align:left;"> <span style="     color: red !important;">-2.609</span> </td>
+   <td style="text-align:left;"> <span style="     color: red !important;">-2.566</span> </td>
   </tr>
   <tr>
    <td style="text-align:left;font-weight: bold;"> mhc10 </td>
    <td style="text-align:left;"> <span style="     color: black !important;">0.888</span> </td>
    <td style="text-align:left;"> <span style="     color: black !important;">0.888</span> </td>
-   <td style="text-align:left;"> <span style="     color: black !important;">-1.383</span> </td>
-   <td style="text-align:left;"> <span style="     color: black !important;">-1.086</span> </td>
+   <td style="text-align:left;"> <span style="     color: black !important;">-1.203</span> </td>
+   <td style="text-align:left;"> <span style="     color: black !important;">-1.28</span> </td>
   </tr>
   <tr>
    <td style="text-align:left;font-weight: bold;"> mhc11 </td>
    <td style="text-align:left;"> <span style="     color: black !important;">0.788</span> </td>
    <td style="text-align:left;"> <span style="     color: black !important;">0.798</span> </td>
-   <td style="text-align:left;"> <span style="     color: red !important;">-2.315</span> </td>
-   <td style="text-align:left;"> <span style="     color: black !important;">-1.874</span> </td>
+   <td style="text-align:left;"> <span style="     color: red !important;">-2.791</span> </td>
+   <td style="text-align:left;"> <span style="     color: red !important;">-2.527</span> </td>
   </tr>
   <tr>
    <td style="text-align:left;font-weight: bold;"> mhc12 </td>
    <td style="text-align:left;"> <span style="     color: black !important;">0.777</span> </td>
    <td style="text-align:left;"> <span style="     color: black !important;">0.783</span> </td>
-   <td style="text-align:left;"> <span style="     color: red !important;">-2.505</span> </td>
-   <td style="text-align:left;"> <span style="     color: red !important;">-3.072</span> </td>
+   <td style="text-align:left;"> <span style="     color: red !important;">-2.363</span> </td>
+   <td style="text-align:left;"> <span style="     color: red !important;">-2.647</span> </td>
   </tr>
   <tr>
    <td style="text-align:left;font-weight: bold;"> mhc13 </td>
    <td style="text-align:left;"> <span style="     color: black !important;">0.847</span> </td>
    <td style="text-align:left;"> <span style="     color: black !important;">0.859</span> </td>
-   <td style="text-align:left;"> <span style="     color: black !important;">-1.674</span> </td>
-   <td style="text-align:left;"> <span style="     color: black !important;">-1.77</span> </td>
+   <td style="text-align:left;"> <span style="     color: black !important;">-1.416</span> </td>
+   <td style="text-align:left;"> <span style="     color: black !important;">-1.646</span> </td>
   </tr>
   <tr>
    <td style="text-align:left;font-weight: bold;"> mhc14 </td>
    <td style="text-align:left;"> <span style="     color: red !important;">0.647</span> </td>
    <td style="text-align:left;"> <span style="     color: red !important;">0.679</span> </td>
-   <td style="text-align:left;"> <span style="     color: red !important;">-3.406</span> </td>
-   <td style="text-align:left;"> <span style="     color: red !important;">-3.931</span> </td>
+   <td style="text-align:left;"> <span style="     color: red !important;">-3.349</span> </td>
+   <td style="text-align:left;"> <span style="     color: red !important;">-3.881</span> </td>
   </tr>
 </tbody>
 </table>
@@ -2359,10 +2339,10 @@ That your life has a sense of direction or meaning to it?
 </div>
 </div>
 <div id="tabset-3-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-3-2-tab">
-<div class="cell">
+<div class="cell" data-hash="rasch_cache/html/unnamed-chunk-25_6a99f6c6e589fd9811f4cb6f99b64fe3">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">RIpcmPCA</span>(df2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">RIpcmPCA</span>(df2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 
@@ -2395,10 +2375,10 @@ That your life has a sense of direction or meaning to it?
 </div>
 </div>
 <div id="tabset-3-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-3-3-tab">
-<div class="cell">
+<div class="cell" data-hash="rasch_cache/html/unnamed-chunk-26_c579974881b99cbb4565804062622316">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">RIresidcorr</span>(df2, <span class="at">cutoff =</span> <span class="fl">0.2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">RIresidcorr</span>(df2, <span class="at">cutoff =</span> <span class="fl">0.2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 
@@ -2561,60 +2541,60 @@ That your life has a sense of direction or meaning to it?
 </div>
 </div>
 <div id="tabset-3-4" class="tab-pane" role="tabpanel" aria-labelledby="tabset-3-4-tab">
-<div class="cell">
+<div class="cell" data-hash="rasch_cache/html/unnamed-chunk-27_3c78af0108931ea1a79371bcc1350d5d">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">RIloadLoc</span>(df2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">RIloadLoc</span>(df2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="rasch_files/figure-html/unnamed-chunk-27-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</div>
+<div id="tabset-3-5" class="tab-pane" role="tabpanel" aria-labelledby="tabset-3-5-tab">
+<div class="cell" data-hash="rasch_cache/html/unnamed-chunk-28_354220321a385d68df0d0bdeed099421">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mirt</span>(df2, <span class="at">model=</span><span class="dv">1</span>, <span class="at">itemtype=</span><span class="st">'Rasch'</span>, <span class="at">verbose =</span> <span class="cn">FALSE</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot</span>(<span class="at">type=</span><span class="st">"trace"</span>, <span class="at">as.table =</span> <span class="cn">TRUE</span>, </span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>       <span class="at">theta_lim =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">6</span>,<span class="dv">6</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <p><img src="rasch_files/figure-html/unnamed-chunk-28-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 </div>
-<div id="tabset-3-5" class="tab-pane" role="tabpanel" aria-labelledby="tabset-3-5-tab">
-<div class="cell">
+<div id="tabset-3-6" class="tab-pane" role="tabpanel" aria-labelledby="tabset-3-6-tab">
+<div class="cell" data-hash="rasch_cache/html/unnamed-chunk-29_b44e30abcbb203032f47d43d47d48701">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mirt</span>(df2, <span class="at">model=</span><span class="dv">1</span>, <span class="at">itemtype=</span><span class="st">'Rasch'</span>, <span class="at">verbose =</span> <span class="cn">FALSE</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot</span>(<span class="at">type=</span><span class="st">"trace"</span>, <span class="at">as.table =</span> <span class="cn">TRUE</span>, </span>
-<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>       <span class="at">theta_lim =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">6</span>,<span class="dv">6</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># increase fig-height above as needed, if you have many items</span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="fu">RItargeting</span>(df2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <p><img src="rasch_files/figure-html/unnamed-chunk-29-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 </div>
-<div id="tabset-3-6" class="tab-pane" role="tabpanel" aria-labelledby="tabset-3-6-tab">
-<div class="cell">
+<div id="tabset-3-7" class="tab-pane" role="tabpanel" aria-labelledby="tabset-3-7-tab">
+<div class="cell" data-hash="rasch_cache/html/unnamed-chunk-30_f245b6e99a095be6053bc74f201b2726">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># increase fig-height above as needed, if you have many items</span></span>
-<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="fu">RItargeting</span>(df2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">RIitemHierarchy</span>(df2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <p><img src="rasch_files/figure-html/unnamed-chunk-30-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 </div>
-<div id="tabset-3-7" class="tab-pane" role="tabpanel" aria-labelledby="tabset-3-7-tab">
-<div class="cell">
+<div id="tabset-3-8" class="tab-pane" role="tabpanel" aria-labelledby="tabset-3-8-tab">
+<div class="cell" data-hash="rasch_cache/html/unnamed-chunk-31_4cc852db38efd6252bc2e3c94beb6af9">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">RIitemHierarchy</span>(df2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">RIdifTable</span>(df2,dif.sex)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <p><img src="rasch_files/figure-html/unnamed-chunk-31-1.png" class="img-fluid" width="672"></p>
-</div>
-</div>
-</div>
-<div id="tabset-3-8" class="tab-pane" role="tabpanel" aria-labelledby="tabset-3-8-tab">
-<div class="cell">
-<details>
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">RIdifTable</span>(df2,dif.sex)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output-display">
-<p><img src="rasch_files/figure-html/unnamed-chunk-32-1.png" class="img-fluid" width="672"></p>
 </div>
 <div class="cell-output-display">
 
@@ -2856,19 +2836,19 @@ mhc14
 </section>
 <section id="rasch-4" class="level2 page-columns page-full" data-number="2.4">
 <h2 data-number="2.4" class="anchored" data-anchor-id="rasch-4"><span class="header-section-number">2.4</span> Rasch 4</h2>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>removed.items <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"mhc3"</span>,<span class="st">"mhc8"</span>,<span class="st">"mhc5"</span>,<span class="st">"mhc6"</span>,<span class="st">"mhc7"</span>,<span class="st">"mhc2"</span>)</span>
-<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>df2 <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span> </span>
-<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">!</span><span class="fu">any_of</span>(removed.items)) <span class="sc">%&gt;%</span> </span>
-<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">everything</span>(), <span class="sc">~</span> car<span class="sc">::</span><span class="fu">recode</span>(.x,<span class="st">"3=2;4=3;5=4"</span>))) <span class="sc">%&gt;%</span> </span>
-<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">mhc4 =</span> car<span class="sc">::</span><span class="fu">recode</span>(mhc4,<span class="st">"1=0;2=1;3=2;4=3"</span>))</span>
-<span id="cb30-7"><a href="#cb30-7" aria-hidden="true" tabindex="-1"></a><span class="fu">RIbarstack</span>(df2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-hash="rasch_cache/html/unnamed-chunk-32_ad8c226fd9924929f38897ff199e34b0">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>removed.items <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"mhc3"</span>,<span class="st">"mhc8"</span>,<span class="st">"mhc5"</span>,<span class="st">"mhc6"</span>,<span class="st">"mhc7"</span>,<span class="st">"mhc2"</span>)</span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>df2 <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span> </span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">!</span><span class="fu">any_of</span>(removed.items)) <span class="sc">%&gt;%</span> </span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">everything</span>(), <span class="sc">~</span> car<span class="sc">::</span><span class="fu">recode</span>(.x,<span class="st">"3=2;4=3;5=4"</span>))) <span class="sc">%&gt;%</span> </span>
+<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">mhc4 =</span> car<span class="sc">::</span><span class="fu">recode</span>(mhc4,<span class="st">"1=0;2=1;3=2;4=3"</span>))</span>
+<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a><span class="fu">RIbarstack</span>(df2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="rasch_files/figure-html/unnamed-chunk-33-1.png" class="img-fluid" width="672"></p>
+<p><img src="rasch_files/figure-html/unnamed-chunk-32-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
-<div class="cell page-columns page-full">
+<div class="cell page-columns page-full" data-hash="rasch_cache/html/unnamed-chunk-33_e39a914efcb56f9b61be09dd17bd6b6f">
 
 <div class="no-row-height column-margin column-container"><div class="cell-output-display">
 
@@ -2956,10 +2936,10 @@ That your life has a sense of direction or meaning to it?
 <ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-4-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-1" role="tab" aria-controls="tabset-4-1" aria-selected="true">Item fit</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-4-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-2" role="tab" aria-controls="tabset-4-2" aria-selected="false">PCA</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-4-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-3" role="tab" aria-controls="tabset-4-3" aria-selected="false">Residual correlations</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-4-4-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-4" role="tab" aria-controls="tabset-4-4" aria-selected="false">1st contrast loadings</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-4-5-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-5" role="tab" aria-controls="tabset-4-5" aria-selected="false">Response categories (ICC)</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-4-6-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-6" role="tab" aria-controls="tabset-4-6" aria-selected="false">Targeting</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-4-7-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-7" role="tab" aria-controls="tabset-4-7" aria-selected="false">Item hierarchy</a></li></ul>
 <div class="tab-content">
 <div id="tabset-4-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-4-1-tab">
-<div class="cell">
+<div class="cell" data-hash="rasch_cache/html/unnamed-chunk-34_76cf10d0855262119ea876e8879ee159">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">RIitemfitPCM2</span>(df2, <span class="dv">250</span>, <span class="dv">24</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">RIitemfitPCM2</span>(df2, <span class="dv">250</span>, <span class="dv">24</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 
@@ -2978,57 +2958,57 @@ That your life has a sense of direction or meaning to it?
    <td style="text-align:left;font-weight: bold;"> mhc1 </td>
    <td style="text-align:left;"> <span style="     color: black !important;">1.029</span> </td>
    <td style="text-align:left;"> <span style="     color: black !important;">1.027</span> </td>
-   <td style="text-align:left;"> <span style="     color: black !important;">0.484</span> </td>
-   <td style="text-align:left;"> <span style="     color: black !important;">0.147</span> </td>
+   <td style="text-align:left;"> <span style="     color: black !important;">0.643</span> </td>
+   <td style="text-align:left;"> <span style="     color: black !important;">0.314</span> </td>
   </tr>
   <tr>
    <td style="text-align:left;font-weight: bold;"> mhc4 </td>
    <td style="text-align:left;"> <span style="     color: black !important;">1.207</span> </td>
    <td style="text-align:left;"> <span style="     color: black !important;">1.194</span> </td>
-   <td style="text-align:left;"> <span style="     color: black !important;">1.916</span> </td>
-   <td style="text-align:left;"> <span style="     color: black !important;">1.834</span> </td>
+   <td style="text-align:left;"> <span style="     color: black !important;">1.818</span> </td>
+   <td style="text-align:left;"> <span style="     color: black !important;">1.822</span> </td>
   </tr>
   <tr>
    <td style="text-align:left;font-weight: bold;"> mhc9 </td>
    <td style="text-align:left;"> <span style="     color: black !important;">0.814</span> </td>
    <td style="text-align:left;"> <span style="     color: black !important;">0.807</span> </td>
-   <td style="text-align:left;"> <span style="     color: red !important;">-2.16</span> </td>
-   <td style="text-align:left;"> <span style="     color: red !important;">-2.177</span> </td>
+   <td style="text-align:left;"> <span style="     color: red !important;">-2.285</span> </td>
+   <td style="text-align:left;"> <span style="     color: red !important;">-2.537</span> </td>
   </tr>
   <tr>
    <td style="text-align:left;font-weight: bold;"> mhc10 </td>
    <td style="text-align:left;"> <span style="     color: black !important;">0.919</span> </td>
    <td style="text-align:left;"> <span style="     color: black !important;">0.92</span> </td>
-   <td style="text-align:left;"> <span style="     color: black !important;">-0.968</span> </td>
-   <td style="text-align:left;"> <span style="     color: black !important;">-0.759</span> </td>
+   <td style="text-align:left;"> <span style="     color: black !important;">-0.971</span> </td>
+   <td style="text-align:left;"> <span style="     color: black !important;">-1.016</span> </td>
   </tr>
   <tr>
    <td style="text-align:left;font-weight: bold;"> mhc11 </td>
    <td style="text-align:left;"> <span style="     color: black !important;">0.829</span> </td>
    <td style="text-align:left;"> <span style="     color: black !important;">0.842</span> </td>
-   <td style="text-align:left;"> <span style="     color: black !important;">-1.873</span> </td>
-   <td style="text-align:left;"> <span style="     color: black !important;">-1.868</span> </td>
+   <td style="text-align:left;"> <span style="     color: black !important;">-1.912</span> </td>
+   <td style="text-align:left;"> <span style="     color: black !important;">-1.793</span> </td>
   </tr>
   <tr>
    <td style="text-align:left;font-weight: bold;"> mhc12 </td>
    <td style="text-align:left;"> <span style="     color: black !important;">0.789</span> </td>
    <td style="text-align:left;"> <span style="     color: black !important;">0.799</span> </td>
-   <td style="text-align:left;"> <span style="     color: red !important;">-2.28</span> </td>
-   <td style="text-align:left;"> <span style="     color: red !important;">-2.388</span> </td>
+   <td style="text-align:left;"> <span style="     color: red !important;">-2.099</span> </td>
+   <td style="text-align:left;"> <span style="     color: red !important;">-2.107</span> </td>
   </tr>
   <tr>
    <td style="text-align:left;font-weight: bold;"> mhc13 </td>
    <td style="text-align:left;"> <span style="     color: black !important;">0.85</span> </td>
    <td style="text-align:left;"> <span style="     color: black !important;">0.856</span> </td>
-   <td style="text-align:left;"> <span style="     color: black !important;">-1.786</span> </td>
-   <td style="text-align:left;"> <span style="     color: black !important;">-1.495</span> </td>
+   <td style="text-align:left;"> <span style="     color: black !important;">-1.809</span> </td>
+   <td style="text-align:left;"> <span style="     color: black !important;">-1.515</span> </td>
   </tr>
   <tr>
    <td style="text-align:left;font-weight: bold;"> mhc14 </td>
    <td style="text-align:left;"> <span style="     color: black !important;">0.7</span> </td>
    <td style="text-align:left;"> <span style="     color: black !important;">0.727</span> </td>
-   <td style="text-align:left;"> <span style="     color: red !important;">-2.674</span> </td>
-   <td style="text-align:left;"> <span style="     color: red !important;">-3.275</span> </td>
+   <td style="text-align:left;"> <span style="     color: red !important;">-2.819</span> </td>
+   <td style="text-align:left;"> <span style="     color: red !important;">-3.209</span> </td>
   </tr>
 </tbody>
 </table>
@@ -3037,10 +3017,10 @@ That your life has a sense of direction or meaning to it?
 </div>
 </div>
 <div id="tabset-4-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-4-2-tab">
-<div class="cell">
+<div class="cell" data-hash="rasch_cache/html/unnamed-chunk-35_0b8ada799ab638ce45be52ae03bf6f71">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">RIpcmPCA</span>(df2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">RIpcmPCA</span>(df2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 
@@ -3073,10 +3053,10 @@ That your life has a sense of direction or meaning to it?
 </div>
 </div>
 <div id="tabset-4-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-4-3-tab">
-<div class="cell">
+<div class="cell" data-hash="rasch_cache/html/unnamed-chunk-36_5c4019b98926ed758d20fb5ccc1eb3f0">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">RIresidcorr</span>(df2, <span class="at">cutoff =</span> <span class="fl">0.2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">RIresidcorr</span>(df2, <span class="at">cutoff =</span> <span class="fl">0.2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 
@@ -3195,49 +3175,49 @@ That your life has a sense of direction or meaning to it?
 </div>
 </div>
 <div id="tabset-4-4" class="tab-pane" role="tabpanel" aria-labelledby="tabset-4-4-tab">
-<div class="cell">
+<div class="cell" data-hash="rasch_cache/html/unnamed-chunk-37_8ea32451bbbd68212be328d5e8d7e004">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">RIloadLoc</span>(df2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">RIloadLoc</span>(df2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="rasch_files/figure-html/unnamed-chunk-37-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</div>
+<div id="tabset-4-5" class="tab-pane" role="tabpanel" aria-labelledby="tabset-4-5-tab">
+<div class="cell" data-hash="rasch_cache/html/unnamed-chunk-38_5889435603a37ce407b91e062883da54">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mirt</span>(df2, <span class="at">model=</span><span class="dv">1</span>, <span class="at">itemtype=</span><span class="st">'Rasch'</span>, <span class="at">verbose =</span> <span class="cn">FALSE</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot</span>(<span class="at">type=</span><span class="st">"trace"</span>, <span class="at">as.table =</span> <span class="cn">TRUE</span>, </span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>       <span class="at">theta_lim =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">6</span>,<span class="dv">6</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <p><img src="rasch_files/figure-html/unnamed-chunk-38-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 </div>
-<div id="tabset-4-5" class="tab-pane" role="tabpanel" aria-labelledby="tabset-4-5-tab">
-<div class="cell">
+<div id="tabset-4-6" class="tab-pane" role="tabpanel" aria-labelledby="tabset-4-6-tab">
+<div class="cell" data-hash="rasch_cache/html/unnamed-chunk-39_8122d1463ab827a51862a1c1d9c43f69">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mirt</span>(df2, <span class="at">model=</span><span class="dv">1</span>, <span class="at">itemtype=</span><span class="st">'Rasch'</span>, <span class="at">verbose =</span> <span class="cn">FALSE</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot</span>(<span class="at">type=</span><span class="st">"trace"</span>, <span class="at">as.table =</span> <span class="cn">TRUE</span>, </span>
-<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>       <span class="at">theta_lim =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">6</span>,<span class="dv">6</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="co"># increase fig-height above as needed, if you have many items</span></span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a><span class="fu">RItargeting</span>(df2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <p><img src="rasch_files/figure-html/unnamed-chunk-39-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 </div>
-<div id="tabset-4-6" class="tab-pane" role="tabpanel" aria-labelledby="tabset-4-6-tab">
-<div class="cell">
+<div id="tabset-4-7" class="tab-pane" role="tabpanel" aria-labelledby="tabset-4-7-tab">
+<div class="cell" data-hash="rasch_cache/html/unnamed-chunk-40_af7b93a385b55e32b5ddc9a923da74bd">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="co"># increase fig-height above as needed, if you have many items</span></span>
-<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a><span class="fu">RItargeting</span>(df2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">RIitemHierarchy</span>(df2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <p><img src="rasch_files/figure-html/unnamed-chunk-40-1.png" class="img-fluid" width="672"></p>
-</div>
-</div>
-</div>
-<div id="tabset-4-7" class="tab-pane" role="tabpanel" aria-labelledby="tabset-4-7-tab">
-<div class="cell">
-<details>
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">RIitemHierarchy</span>(df2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output-display">
-<p><img src="rasch_files/figure-html/unnamed-chunk-41-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 </div>
@@ -3248,7 +3228,7 @@ That your life has a sense of direction or meaning to it?
 <h2 data-number="2.5" class="anchored" data-anchor-id="dif-analysis"><span class="header-section-number">2.5</span> DIF-analysis</h2>
 <section id="gender" class="level3 page-columns page-full" data-number="2.5.1">
 <h3 data-number="2.5.1" class="anchored" data-anchor-id="gender"><span class="header-section-number">2.5.1</span> Gender</h3>
-<div class="cell page-columns page-full">
+<div class="cell page-columns page-full" data-hash="rasch_cache/html/unnamed-chunk-41_3ab50ab63b77f5314e3bf8e5b643ab26">
 
 <div class="no-row-height column-margin column-container"><div class="cell-output-display">
 
@@ -3336,13 +3316,13 @@ That your life has a sense of direction or meaning to it?
 <ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-5-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-5-1" role="tab" aria-controls="tabset-5-1" aria-selected="true">Table</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-5-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-5-2" role="tab" aria-controls="tabset-5-2" aria-selected="false">Locations</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-5-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-5-3" role="tab" aria-controls="tabset-5-3" aria-selected="false">Thresholds</a></li></ul>
 <div class="tab-content">
 <div id="tabset-5-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-5-1-tab">
-<div class="cell">
+<div class="cell" data-hash="rasch_cache/html/unnamed-chunk-42_e4a537ec228f88ce6bc706353ecad4e5">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">RIdifTable</span>(df2, dif.sex)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">RIdifTable</span>(df2, dif.sex)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
-<p><img src="rasch_files/figure-html/unnamed-chunk-43-1.png" class="img-fluid" width="672"></p>
+<p><img src="rasch_files/figure-html/unnamed-chunk-42-1.png" class="img-fluid" width="672"></p>
 </div>
 <div class="cell-output-display">
 
@@ -3537,24 +3517,24 @@ mhc14
 </div>
 </div>
 <div id="tabset-5-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-5-2-tab">
-<div class="cell">
+<div class="cell" data-hash="rasch_cache/html/unnamed-chunk-43_dfe75645a558f13a63dc560604372e27">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="fu">RIdifFigure</span>(df2, dif.sex)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">RIdifFigure</span>(df2, dif.sex)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
-<p><img src="rasch_files/figure-html/unnamed-chunk-44-1.png" class="img-fluid" width="672"></p>
+<p><img src="rasch_files/figure-html/unnamed-chunk-43-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 </div>
 <div id="tabset-5-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-5-3-tab">
-<div class="cell">
+<div class="cell" data-hash="rasch_cache/html/unnamed-chunk-44_ffdaa0499c6ff4ef10480752e3c70099">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">RIdifFigThresh</span>(df2, dif.sex)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="fu">RIdifFigThresh</span>(df2, dif.sex)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
-<p><img src="rasch_files/figure-html/unnamed-chunk-45-1.png" class="img-fluid" width="672"></p>
+<p><img src="rasch_files/figure-html/unnamed-chunk-44-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 </div>
@@ -3564,37 +3544,37 @@ mhc14
 </section>
 <section id="reliability" class="level2" data-number="2.6">
 <h2 data-number="2.6" class="anchored" data-anchor-id="reliability"><span class="header-section-number">2.6</span> Reliability</h2>
-<div class="cell">
+<div class="cell" data-hash="rasch_cache/html/unnamed-chunk-45_e407cf079cd506ed58f5a48e6620e75e">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="fu">RItif</span>(df2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">RItif</span>(df2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
-<p><img src="rasch_files/figure-html/unnamed-chunk-46-1.png" class="img-fluid" width="672"></p>
+<p><img src="rasch_files/figure-html/unnamed-chunk-45-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 </section>
 <section id="person-infit-zstd" class="level2" data-number="2.7">
 <h2 data-number="2.7" class="anchored" data-anchor-id="person-infit-zstd"><span class="header-section-number">2.7</span> Person infit ZSTD</h2>
-<div class="cell">
+<div class="cell" data-hash="rasch_cache/html/unnamed-chunk-46_8e18bddeab1de8d53603eb3af8794f94">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="fu">RIpfit</span>(df2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="fu">RIpfit</span>(df2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
-<p><img src="rasch_files/figure-html/unnamed-chunk-47-1.png" class="img-fluid" width="672"></p>
+<p><img src="rasch_files/figure-html/unnamed-chunk-46-1.png" class="img-fluid" width="672"></p>
 </div>
 <div class="cell-output-display">
-<p><img src="rasch_files/figure-html/unnamed-chunk-47-2.png" class="img-fluid" width="672"></p>
+<p><img src="rasch_files/figure-html/unnamed-chunk-46-2.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 </section>
 <section id="item-parameters" class="level2" data-number="2.8">
 <h2 data-number="2.8" class="anchored" data-anchor-id="item-parameters"><span class="header-section-number">2.8</span> Item parameters</h2>
-<div class="cell">
+<div class="cell" data-hash="rasch_cache/html/unnamed-chunk-47_067de08b31bcd1a57b3228a42ccf0677">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="fu">RIitemparams</span>(df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="fu">RIitemparams</span>(df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 
@@ -3750,10 +3730,10 @@ mhc14
 </section>
 <section id="transformation-table" class="level2" data-number="2.9">
 <h2 data-number="2.9" class="anchored" data-anchor-id="transformation-table"><span class="header-section-number">2.9</span> Transformation table</h2>
-<div class="cell">
+<div class="cell" data-hash="rasch_cache/html/unnamed-chunk-48_9e019ed7354934256e40338f767cb6a6">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="fu">RIscoreSE</span>(df2, <span class="at">score_range =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">4</span>,<span class="dv">5</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="fu">RIscoreSE</span>(df2, <span class="at">score_range =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">4</span>,<span class="dv">5</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 
@@ -3934,29 +3914,29 @@ mhc14
 </section>
 <section id="ordinalinterval-figure" class="level2" data-number="2.10">
 <h2 data-number="2.10" class="anchored" data-anchor-id="ordinalinterval-figure"><span class="header-section-number">2.10</span> Ordinal/interval figure</h2>
-<div class="cell">
+<div class="cell" data-hash="rasch_cache/html/unnamed-chunk-49_b92347a29b31ce92ac9046e096906ab9">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="fu">RIscoreSE</span>(df2, <span class="at">score_range =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">4</span>,<span class="dv">5</span>),</span>
-<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>          <span class="at">output =</span> <span class="st">"figure"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="fu">RIscoreSE</span>(df2, <span class="at">score_range =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">4</span>,<span class="dv">5</span>),</span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>          <span class="at">output =</span> <span class="st">"figure"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
-<p><img src="rasch_files/figure-html/unnamed-chunk-50-1.png" class="img-fluid" width="672"></p>
+<p><img src="rasch_files/figure-html/unnamed-chunk-49-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 </section>
 <section id="software-used" class="level2" data-number="2.11">
 <h2 data-number="2.11" class="anchored" data-anchor-id="software-used"><span class="header-section-number">2.11</span> Software used</h2>
-<div class="cell">
+<div class="cell" data-hash="rasch_cache/html/unnamed-chunk-50_7ec00b319463209575248d8e956aa1dd">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>pkgs <span class="ot">&lt;-</span> <span class="fu">cite_packages</span>(<span class="at">cite.tidyverse =</span> <span class="cn">TRUE</span>, </span>
-<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>                      <span class="at">output =</span> <span class="st">"table"</span>,</span>
-<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a>                      <span class="at">bib.file =</span> <span class="st">"grateful-refs.bib"</span>,</span>
-<span id="cb46-4"><a href="#cb46-4" aria-hidden="true" tabindex="-1"></a>                      <span class="at">include.RStudio =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb46-5"><a href="#cb46-5" aria-hidden="true" tabindex="-1"></a>                      <span class="at">out.dir =</span> <span class="fu">getwd</span>())</span>
-<span id="cb46-6"><a href="#cb46-6" aria-hidden="true" tabindex="-1"></a><span class="fu">formattable</span>(pkgs, </span>
-<span id="cb46-7"><a href="#cb46-7" aria-hidden="true" tabindex="-1"></a>            <span class="at">table.attr =</span> <span class="st">'class=</span><span class="sc">\"</span><span class="st">table table-striped</span><span class="sc">\"</span><span class="st"> style="font-size: 15px; font-family: Lato; width: 80%"'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>pkgs <span class="ot">&lt;-</span> <span class="fu">cite_packages</span>(<span class="at">cite.tidyverse =</span> <span class="cn">TRUE</span>, </span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>                      <span class="at">output =</span> <span class="st">"table"</span>,</span>
+<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a>                      <span class="at">bib.file =</span> <span class="st">"grateful-refs.bib"</span>,</span>
+<span id="cb45-4"><a href="#cb45-4" aria-hidden="true" tabindex="-1"></a>                      <span class="at">include.RStudio =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb45-5"><a href="#cb45-5" aria-hidden="true" tabindex="-1"></a>                      <span class="at">out.dir =</span> <span class="fu">getwd</span>())</span>
+<span id="cb45-6"><a href="#cb45-6" aria-hidden="true" tabindex="-1"></a><span class="fu">formattable</span>(pkgs, </span>
+<span id="cb45-7"><a href="#cb45-7" aria-hidden="true" tabindex="-1"></a>            <span class="at">table.attr =</span> <span class="st">'class=</span><span class="sc">\"</span><span class="st">table table-striped</span><span class="sc">\"</span><span class="st"> style="font-size: 15px; font-family: Lato; width: 80%"'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 
@@ -4251,6 +4231,9 @@ Hester, Jim, and Jennifer Bryan. 2024. <em><span class="nocase">glue</span>: Int
 </div>
 <div id="ref-RISEkbmRasch" class="csl-entry" role="listitem">
 Johansson, Magnus. 2024. <em><span>RISEkbmRasch</span>: Psychometric Analysis in r with Rasch Measurement Theory</em>. <a href="https://github.com/pgmj/RISEkbmRasch">https://github.com/pgmj/RISEkbmRasch</a>.
+</div>
+<div id="ref-johansson" class="csl-entry" role="listitem">
+Johansson, Magnus, Marit Preuter, Simon Karlsson, Marie-Louise Möllerberg, Hanna Svensson, and Jeanette Melin. 2023. <span>“Valid and Reliable? Basic and Expanded Recommendations for Psychometric Reporting and Quality Assessment.”</span> <a href="https://doi.org/10.31219/osf.io/3htzc">https://doi.org/10.31219/osf.io/3htzc</a>.
 </div>
 <div id="ref-eRm2015e" class="csl-entry" role="listitem">
 Koller, Ingrid, Marco Maier, and Reinhold Hatzinger. 2015. <span>“An Empirical Power Analysis of Quasi-Exact Tests for the Rasch Model: Measurement Invariance in Small Samples.”</span> <em>Methodology</em> 11. <a href="https://doi.org/10.1027/1614-2241/a000090">https://doi.org/10.1027/1614-2241/a000090</a>.

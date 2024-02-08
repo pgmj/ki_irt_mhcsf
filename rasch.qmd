@@ -15,7 +15,7 @@ execute:
   echo: true
   warning: false
   message: false
-  cache: false
+  cache: true
 editor_options: 
   markdown: 
     wrap: 72
@@ -63,34 +63,6 @@ rename <- dplyr::rename
 source("RISE_theme.R")
 ```
 
-
-```{r}
-### import data
-# df <- read_excel("data/MasterFile_CLEAN.xlsx") %>% 
-#   rename(gender = WhatisyourgenderSelectedChoice,
-#          age = Whatisyourage,
-#          citizenship = WhatisyourcitizenshipSelectedChoice) %>% 
-#   select(gender,age,citizenship,starts_with("mhc")) %>% 
-#   select(-starts_with("mhc_"))
-# 
-# ### Load item information
-# # make sure that variable names in df match with itemlabels$itemnr
-# itemlabels <- read_excel("data/itemlabels_MHC_SF.xlsx") %>% 
-#   mutate(item = str_squish(item))
-# 
-# #---- Create DIF variables----
-#   
-# # DIF variables into vectors, recoded as factors since DIF functions need this
-# dif.gender <- as.factor(df$gender)
-# dif.age <- df$age
-# dif.citizenship <- as.factor(df$citizenship)
-# # then remove them from dataframe, since we need a dataframe with only item data for the Rasch analyses
-# df$gender <- NULL
-# df$age <- NULL
-# df$citizenship <- NULL
-
-```
-
 ```{r}
 ### other, bigger dataset from [@echeverría2017]
 ### read file
@@ -112,11 +84,12 @@ df <- df %>%
 
 ```
 
+For an overview of the different aspects, model metrics, and cutoff values reported in a Rasch analysis, please see @johansson.
+
 ## Rasch analysis 1
 
 The eRm package, which uses Conditional Maximum Likelihood (CML)
-estimation, will be used primarily. For this analysis of polytomous data, the Partial
-Credit Model will be used.
+estimation, will be used primarily. For this analysis of polytomous data, the Partial Credit Model will be used.
 
 ```{r}
 #| column: margin
@@ -172,7 +145,14 @@ All items have disordered thresholds except 1 and 2, and both of those have very
 
 We'll remove one item from each cluster, based on the level of correlations, which results in the removal of items 3 and 8.
 
-Also, we'll merge the response categories:
+Aspects to consider when choosing between two items with strong residual correlations include:
+
+- item fit
+- item targeting properties
+- ordering of thresholds
+- DIF
+
+Also, we'll merge the two middle response categories:
 
 - 'About 1 time a week', 
 - 'About 2 or 3 times a week', 

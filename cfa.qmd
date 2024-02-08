@@ -15,7 +15,7 @@ execute:
   echo: true
   warning: false
   message: false
-  cache: false
+  cache: true
 editor_options: 
   markdown: 
     wrap: 72
@@ -51,33 +51,6 @@ recode <- car::recode
 rename <- dplyr::rename
 
 source("RISE_theme.R")
-```
-
-```{r}
-### import data
-# df <- read_excel("data/MasterFile_CLEAN.xlsx") %>% 
-#   rename(gender = WhatisyourgenderSelectedChoice,
-#          age = Whatisyourage,
-#          citizenship = WhatisyourcitizenshipSelectedChoice) %>% 
-#   select(gender,age,citizenship,starts_with("mhc")) %>% 
-#   select(-starts_with("mhc_"))
-# 
-# ### Load item information
-# # make sure that variable names in df match with itemlabels$itemnr
-# itemlabels <- read_excel("data/itemlabels_MHC_SF.xlsx") %>% 
-#   mutate(item = str_squish(item))
-# 
-# #---- Create DIF variables----
-#   
-# # DIF variables into vectors, recoded as factors since DIF functions need this
-# dif.gender <- as.factor(df$gender)
-# dif.age <- df$age
-# dif.citizenship <- as.factor(df$citizenship)
-# # then remove them from dataframe, since we need a dataframe with only item data for the Rasch analyses
-# df$gender <- NULL
-# df$age <- NULL
-# df$citizenship <- NULL
-
 ```
 
 ```{r}
